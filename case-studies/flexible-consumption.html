@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Flexible Consumption GTM Launch — How Roshan Lal led GTM Systems for HashiCorp's usage-based billing launch, generating $5M+ ARR in year one." />
+  <meta property="og:title" content="Flexible Consumption GTM Launch — Roshan Lal" />
+  <meta property="og:description" content="Business Systems lead for HashiCorp Cloud's usage-based billing launch. $5M+ ARR in year one, zero billing errors in first 6 months." />
+  <title>Flexible Consumption GTM Launch — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-green">Shipped</span>
+      <span class="cs-company">HashiCorp</span>
+    </div>
+    <h1 class="cs-title">Flexible Consumption GTM Launch</h1>
+    <p class="cs-tagline">Business Systems lead for HashiCorp Cloud's shift to usage-based billing — wiring the full order-to-revenue flow for a new monetization model that generated $5M+ ARR in its first year.</p>
+    <div class="cs-tags">
+      <span class="tag">Salesforce CPQ</span>
+      <span class="tag">Billing Systems</span>
+      <span class="tag">Usage-Based Billing</span>
+      <span class="tag">Revenue Recognition</span>
+      <span class="tag">Snowflake</span>
+      <span class="tag">RevOps</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">$5M+</span>
+        <span class="cs-stat-lbl">ARR generated in year one</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">Zero</span>
+        <span class="cs-stat-lbl">Billing errors in first 6 months</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">6 mo.</span>
+        <span class="cs-stat-lbl">Zero to live on a new billing model</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">HashiCorp was launching a cloud product with consumption-based pricing. Every system assumed seat licenses. None of them were ready.</h2>
+      <p>HashiCorp had built a successful business on perpetual and subscription seat licenses. The entire GTM stack — Salesforce, CPQ, billing, revenue recognition — was architected around that model. When the business made the strategic decision to launch HashiCorp Cloud Platform (HCP) with <strong>usage-based, consumption billing</strong>, every system had to adapt.</p>
+      <p>This wasn't a minor configuration change. Usage-based billing has fundamentally different data requirements: <strong>real-time metering, credit tracking, overage calculation, and ratable revenue recognition</strong> — none of which existed in the current stack. And the launch timeline was aggressive: six months from kickoff to revenue.</p>
+
+      <div class="callout">
+        <strong>The stakes were high.</strong> This was HashiCorp's first cloud-native product and a critical signal to the market about the company's direction. A systems failure — billing errors, mis-recognized revenue, broken entitlements — would have been highly visible to customers and investors alike.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>No consumption data model in Salesforce</strong> — contracts, entitlements, and usage periods didn't exist as objects</li>
+        <li><strong>No metering pipeline</strong> — product usage data lived in engineering systems with no path to CRM or billing</li>
+        <li><strong>CPQ built for fixed-price deals</strong> — no quoting capability for credits, commitments, or usage tiers</li>
+        <li><strong>Revenue recognition rules</strong> needed to handle ratable recognition across variable consumption periods</li>
+        <li><strong>Cross-functional alignment gap</strong> — GTM, Product, Engineering, Finance, and Legal all had different assumptions about how the model would work</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Form a cross-functional pod. Map the full order-to-revenue flow first. Build in the right sequence.</h2>
+      <p>The first thing I did was <strong>map the complete order-to-revenue flow</strong> for a consumption model — from a customer signing up, through usage events, through billing, through revenue recognition. Every gap and handoff became a project workstream.</p>
+      <p>I formed a working pod with representatives from GTM, Product, Engineering, Finance, and PMM — meeting weekly with clear decision rights on each domain. Misalignment at this stage is expensive. We resolved it in rooms before it became code.</p>
+
+      <div class="callout">
+        The key early decision: <strong>extend Salesforce vs. buy a purpose-built billing platform</strong>. We chose to extend Salesforce — keeping GTM's single source of truth intact and avoiding a new platform adoption cycle inside a 6-month window. The tradeoff was more complex data modeling. It was the right call.
+      </div>
+
+      <p>I sequenced the build around dependencies: data model first, then the metering pipeline, then CPQ quoting flows, then rev rec configuration, then rep enablement. Each layer had to be stable before the next could be built reliably.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">A new Salesforce data model, a real-time usage pipeline, CPQ for consumption, and end-to-end revenue recognition.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Salesforce data model — Custom objects for consumption</div>
+            <div class="step-desc">Built a new object layer in Salesforce: Consumption Contract (top-level), Usage Period (tracks active measurement windows), Entitlement (what the customer purchased), and Credit Balance (remaining usage). Each related to Account and Opportunity.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Metering pipeline — Engineering APIs → Snowflake → Salesforce</div>
+            <div class="step-desc">Partnered with Engineering to expose usage events via API. Built a Snowflake transformation layer to aggregate raw events into billable usage summaries. Nightly sync to Salesforce via Apex batch jobs, with real-time alerting on pipeline failures.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Salesforce CPQ — Consumption quote types</div>
+            <div class="step-desc">Extended CPQ with three new quote types: Credit Pack (upfront commitment), Commitment Tier (volume discount at thresholds), and On-Demand (pay-as-you-go with monthly true-up). Each with its own approval workflow and pricing rules.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Revenue recognition — Ratable recognition over consumption periods</div>
+            <div class="step-desc">Configured rev rec rules for consumption contracts: credit packs recognized ratably over the contract term, on-demand recognized as consumed. Coordinated with Finance to validate against ASC 606 requirements before go-live.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Rep enablement — New quoting flows and consumption playbook</div>
+            <div class="step-desc">Built guided CPQ quoting flow for consumption deals, reducing quote creation time vs. manual. Wrote a consumption contract playbook covering pricing strategy, common objections, and usage-based negotiation tactics.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">$5M+ ARR in year one. A reusable framework for every product expansion that followed.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">$5M+</span>
+          <div class="result-label">ARR in year one</div>
+          <div class="result-desc">The Flexible Consumption model generated over $5M in annual recurring revenue in its first full year — a major validation of both the product and the GTM systems that supported it.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Zero</span>
+          <div class="result-label">Billing errors (first 6 months)</div>
+          <div class="result-desc">Zero customer-facing billing errors in the first six months post-launch. The metering pipeline and rev rec configuration ran cleanly from day one.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">100%</span>
+          <div class="result-label">Automated billing pipeline</div>
+          <div class="result-desc">Usage-to-invoice cycle fully automated — no manual calculation or intervention required for standard consumption contracts.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Template</span>
+          <div class="result-label">Used for all future HCP launches</div>
+          <div class="result-desc">The data model and pipeline framework became the standard template for all subsequent HCP product expansions, compressing future launch timelines significantly.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What this project taught me about systems for new business models.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">🗺️</span>
+          <span><strong>Map the full flow before touching a single system.</strong> The order-to-revenue mapping exercise was the most valuable week of the project. It surfaced every gap, every handoff, and every assumption mismatch before anyone wrote a line of code or configuration. Do this first, always.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🤝</span>
+          <span><strong>Business Systems is a cross-functional coordination role, not just a technical one.</strong> The hardest parts of this project weren't Salesforce configuration — they were getting Finance, Engineering, and GTM to agree on how consumption should be modeled. Invest in those conversations early.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🏗️</span>
+          <span><strong>Extend your existing systems before adding new ones.</strong> The temptation when launching something new is to buy a purpose-built platform. But adding a net-new billing system in a 6-month timeline, while maintaining a legacy Salesforce environment, creates more risk than it solves. Build on what you have until you genuinely can't.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📐</span>
+          <span><strong>Build for the second launch, not just the first.</strong> The consumption framework we built was deliberately generalized — not just for Vault on HCP, but for any future product using consumption pricing. That decision paid off immediately when subsequent products launched on the same rails.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Launching a new pricing model?</h2>
+    <p>Usage-based, hybrid, or consumption models require systems infrastructure most GTM teams don't have. I've built it. Let's talk.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="lead-routing.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">Lead Routing Re-Architecture</span>
+      </a>
+      <a href="agentic-gtm-workflow.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">Agentic GTM Workflow</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshannlal@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/roshan-lal" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

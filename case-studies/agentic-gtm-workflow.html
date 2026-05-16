@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Agentic GTM Workflow — How Roshan Lal built an n8n + Claude AI workflow that autonomously handles prospect research, CRM updates, and outreach sequencing." />
+  <meta property="og:title" content="Agentic GTM Workflow — Roshan Lal" />
+  <meta property="og:description" content="n8n + Claude AI workflow that cuts prospect research from 20+ minutes to under 2 minutes per account, with autonomous CRM updates and sequence enrollment." />
+  <title>Agentic GTM Workflow — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-accent">AI</span>
+      <span class="badge badge-accent">Agentic</span>
+      <span class="cs-company">Independent</span>
+    </div>
+    <h1 class="cs-title">Agentic GTM Workflow</h1>
+    <p class="cs-tagline">An n8n + Claude AI workflow that autonomously researches prospects, updates CRM fields, and enrolls high-fit accounts in sequences — cutting 20+ minutes of manual work per account to under 2.</p>
+    <div class="cs-tags">
+      <span class="tag">n8n</span>
+      <span class="tag">Claude AI</span>
+      <span class="tag">Salesforce</span>
+      <span class="tag">Outreach</span>
+      <span class="tag">Zapier</span>
+      <span class="tag">Agentic</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">&gt;90%</span>
+        <span class="cs-stat-lbl">Reduction in research time per account</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">85%+</span>
+        <span class="cs-stat-lbl">CRM field completeness (automated)</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">&lt;5 min</span>
+        <span class="cs-stat-lbl">Trigger to sequence enrollment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">GTM teams are doing knowledge work that machines should be doing. The research, the routing decisions, the CRM updates — it's all automatable.</h2>
+      <p>Look at how a typical SDR or AE spends their first hour on a new prospect: they open LinkedIn, read the company website, check for recent news, search Salesforce for existing activity, look up the contact in ZoomInfo, write a personalized note in Outreach, and then manually update six CRM fields. <strong>That's 20–30 minutes of work before a single value-creating interaction happens.</strong></p>
+      <p>Multiply that by 30–50 new accounts per week per rep, and you're looking at entire workdays consumed by research that follows near-identical patterns every time. It's rule-based enough to automate but complex enough — synthesizing multiple data sources into a coherent assessment — that simple Zapier workflows can't handle it.</p>
+
+      <div class="callout">
+        <strong>This is exactly the problem LLMs solve.</strong> They're not good at reliable data retrieval, but they're exceptional at reading context from multiple sources and synthesizing a coherent recommendation. Pair an LLM with a reliable workflow orchestrator, and you have the foundation for a genuine GTM agent.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>20–30 min of research per account</strong> — time that grows linearly with pipeline targets</li>
+        <li><strong>Inconsistent research quality</strong> — what a rep finds depends on how thorough they are that day</li>
+        <li><strong>Delayed sequence enrollment</strong> — accounts sit in queues for hours or days before outreach begins</li>
+        <li><strong>Sparse CRM data</strong> — manual entry means incomplete records, broken reporting, and poor attribution</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Design for the full workflow, not just the research step. Build human checkpoints in from the start.</h2>
+      <p>The design principle I started with: <strong>an agent that does 90% of the work autonomously and surfaces the remaining 10% for human review is more valuable than one that tries to do 100% and gets it wrong</strong>. GTM agents fail when they optimize for automation completeness over decision quality.</p>
+      <p>I chose n8n as the orchestration layer because it's open source, self-hostable, supports 400+ native integrations, and has strong branching logic for the conditional decisions an agentic workflow requires. Claude was the LLM choice — specifically for its long context window (needed to process multi-source research) and its reliability on synthesis tasks vs. data hallucination.</p>
+      <p>The workflow scope was deliberately narrow for v1: <strong>research → score → enrich CRM → sequence decision</strong>. No email generation, no autonomous outreach — those came in v2 once the research and scoring layer was validated.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">Five-step agentic loop: research → score → update CRM → decide → enroll or escalate.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Trigger — New account enters target list in Salesforce</div>
+            <div class="step-desc">n8n listens for Salesforce webhook: new lead created, account stage change, or manual "research trigger" field set by a rep. Immediately kicks off the research pipeline — no batch delays.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Research Agent — Multi-source data gathering</div>
+            <div class="step-desc">n8n pulls in parallel: company website content (via Jina.ai reader API), recent news (via News API), LinkedIn company page summary, ZoomInfo firmographics, existing Salesforce activity history, and job posting data (growth signal). All context assembled into a single prompt payload.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Scoring Agent — Claude synthesizes and scores</div>
+            <div class="step-desc">Claude receives the full research context and returns: ICP fit score (1–5), trigger strength (weak / moderate / strong), a one-sentence "why now" summary, and a recommended action (sequence A, sequence B, or hold for human review). Structured JSON output for reliable downstream parsing.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">CRM Enrichment — Write back to Salesforce</div>
+            <div class="step-desc">n8n writes AI score, trigger summary, research-derived fields (tech stack, recent news, key contacts), and data source timestamps back to Salesforce. Fields visible in the rep's lead/account view so context is available before any human interaction.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Sequence Decision — Enroll or escalate</div>
+            <div class="step-desc">Score ≥ 4: auto-enroll in appropriate Outreach sequence based on persona/segment. Score 2–3: send Slack notification to rep with full context for human decision. Score ≤ 1: tag account as low-priority, skip sequencing, log for quarterly review.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 32px;">
+        <strong>The human escalation path was built first, not last.</strong> Before the happy path worked end-to-end, I made sure low-confidence accounts had a clear handoff to a human with full context. This is what makes the system trustworthy — reps know that if Claude isn't confident, they'll hear about it.
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">Research that took 20+ minutes per account now takes under 2. CRM data that used to require manual entry now fills itself.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">&gt;90%</span>
+          <div class="result-label">Research time cut</div>
+          <div class="result-desc">Per-account research time dropped from 20–30 minutes to under 2 minutes of human review — the agent does the rest.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">85%+</span>
+          <div class="result-label">CRM field completeness</div>
+          <div class="result-desc">Salesforce records populated automatically with enriched data, AI scores, and trigger summaries — no manual entry required.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">&lt;5 min</span>
+          <div class="result-label">Trigger to sequence enrollment</div>
+          <div class="result-desc">High-scoring accounts enter Outreach sequences within minutes of the trigger — vs. hours or days with manual processes.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Redirected</span>
+          <div class="result-label">SDR capacity</div>
+          <div class="result-desc">Time recaptured from research was redirected to actual selling — call prep, discovery, and follow-up rather than data gathering.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What I learned building my first production GTM agent.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">🎯</span>
+          <span><strong>Scope the agent tightly for v1.</strong> The temptation is to automate everything. Resist it. Start with the highest-value, most repeatable step (research) and validate that it's accurate before expanding. Every scope addition is a new failure mode to manage.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📋</span>
+          <span><strong>Structured output is not optional.</strong> If Claude returns free-form text, downstream parsing breaks unpredictably. Define the exact JSON schema you need and prompt for it explicitly. Add validation in n8n so malformed responses trigger a fallback, not a broken workflow.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🧠</span>
+          <span><strong>LLMs are synthesizers, not databases.</strong> Claude shouldn't be fetching data — it should be reading data and making judgments. Keep data retrieval in n8n where it's reliable and deterministic. Give Claude the assembled context and ask for the reasoning.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">👤</span>
+          <span><strong>Trust is built through the escalation path, not the automation path.</strong> Reps adopt agentic tools when they trust them. That trust comes from seeing the system gracefully hand off uncertain cases to humans — not from watching it barrel through low-confidence decisions autonomously.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Want to build a GTM agent?</h2>
+    <p>I design and deploy agentic workflows for GTM teams using n8n, Claude, and your existing stack. From scoping to production in 3–5 weeks.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="flexible-consumption.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">Flexible Consumption GTM Launch</span>
+      </a>
+      <a href="stack-consolidation.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">GTM Stack Consolidation</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshannlal@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/roshan-lal" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

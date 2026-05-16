@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: AI-Powered Enrichment Engine — How Roshan Lal built a Clay-based enrichment workflow at Postman that replaced manual prospect research with real-time buying signals." />
+  <meta property="og:title" content="AI-Powered Enrichment Engine — Roshan Lal" />
+  <meta property="og:description" content="Clay-based enrichment workflow that cut rep research time by 80% and surfaced real-time buying signals for outbound at Postman." />
+  <title>AI-Powered Enrichment Engine — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-dot"></span>roshan lal
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back">
+      <i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects
+    </a>
+    <div class="cs-meta">
+      <span class="badge badge-accent">AI</span>
+      <span class="badge badge-green">Live</span>
+      <span class="cs-company">Postman</span>
+    </div>
+    <h1 class="cs-title">AI-Powered Enrichment Engine</h1>
+    <p class="cs-tagline">Replacing 2.5 hours of daily manual research with a Clay-based workflow that surfaces real-time buying signals — so reps spend time selling, not searching.</p>
+    <div class="cs-tags">
+      <span class="tag">Clay</span>
+      <span class="tag">Salesforce</span>
+      <span class="tag">ZoomInfo</span>
+      <span class="tag">Outreach</span>
+      <span class="tag">AI Signals</span>
+      <span class="tag">n8n</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">~80%</span>
+        <span class="cs-stat-lbl">Reduction in per-rep research time</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">85%+</span>
+        <span class="cs-stat-lbl">CRM field completeness (from ~35%)</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">Real-time</span>
+        <span class="cs-stat-lbl">Buying signals surfaced automatically</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="cs-body">
+  <div class="container">
+
+    <!-- The Problem -->
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">Reps were spending 2–3 hours a day on research. That's a rep tax no one was measuring.</h2>
+      <p>When I audited how Postman's outbound reps were spending their time, the answer was uncomfortable: <strong>a significant chunk of every workday was pure manual research</strong> — pulling from ZoomInfo, cross-referencing LinkedIn, checking company websites for news, manually updating Salesforce fields. None of it was selling.</p>
+      <p>The data problem was equally bad. Salesforce records for target accounts were incomplete — missing job titles, wrong contact info, no tech stack signals, no indication of whether a company was in a buying cycle. Reps were effectively sending generic outreach because they lacked the context to personalize.</p>
+
+      <div class="callout">
+        <strong>The core issue wasn't effort — it was infrastructure.</strong> Reps were working hard but fighting the data layer constantly. The solution wasn't to hire more SDRs. It was to build a system that eliminated the research burden entirely.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>No unified signal layer:</strong> intent data, firmographics, and contact data lived in separate tools with no aggregation</li>
+        <li><strong>Static enrichment:</strong> records were enriched once at creation and never updated — stale data within 90 days</li>
+        <li><strong>No prioritization logic:</strong> reps worked accounts in alphabetical order, not by likelihood to convert</li>
+        <li><strong>Manual CRM hygiene:</strong> reps responsible for updating their own records, which meant it rarely happened</li>
+      </ul>
+    </div>
+
+    <!-- The Approach -->
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Evaluate build vs. buy. Pick the right abstraction layer. Design for rep adoption, not just technical elegance.</h2>
+      <p>I evaluated three approaches before landing on Clay as the core platform:</p>
+
+      <div class="compare">
+        <div class="compare-box">
+          <div class="compare-label before">Option: Custom Python scripts</div>
+          <div class="compare-items">
+            <div class="compare-item">✗ High engineering dependency</div>
+            <div class="compare-item">✗ Hard to maintain as data sources change</div>
+            <div class="compare-item">✓ Maximum flexibility</div>
+          </div>
+        </div>
+        <div class="compare-box">
+          <div class="compare-label before">Option: Extend ZoomInfo workflow</div>
+          <div class="compare-items">
+            <div class="compare-item">✗ Single-source enrichment only</div>
+            <div class="compare-item">✗ No signal aggregation capability</div>
+            <div class="compare-item">✓ Already in stack</div>
+          </div>
+        </div>
+      </div>
+
+      <p>Clay won for three reasons: <strong>API-first design</strong> that lets you pull from 75+ data sources in a single table, <strong>no-code accessibility</strong> so RevOps can own it without engineering, and <strong>built-in AI enrichment</strong> using Claude/GPT to generate personalized insights at scale. It was the right abstraction layer — powerful enough for complex logic, operable without a dedicated engineer.</p>
+
+      <p>The design principle I kept returning to: <strong>the output has to be so obviously useful that reps pull it up before every call</strong>. If the data doesn't directly inform the outreach message, it won't get used. Every enrichment field we built had to answer: "would a rep change their email or call script based on this?"</p>
+    </div>
+
+    <!-- The Build -->
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">A multi-source enrichment waterfall with an AI scoring layer — all syncing back to Salesforce automatically.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Data Ingestion — Pull target accounts from Salesforce</div>
+            <div class="step-desc">Clay table connected to Salesforce via API. New leads and target accounts flow in automatically based on lifecycle stage triggers. No manual imports.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Enrichment Waterfall — Company and contact data</div>
+            <div class="step-desc">Multi-source waterfall: ZoomInfo for firmographics → Clearbit for tech stack → LinkedIn for contact info and seniority → web scraping for recent news. Each source fills gaps left by the last.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Signal Layer — Buying intent and trigger detection</div>
+            <div class="step-desc">Automated signals pulled in real-time: G2 category review activity, recent funding events, active job postings in technical roles (growth signal), and technology change detection (switching signal).</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">AI Scoring — Claude synthesizes signals into a prioritization score</div>
+            <div class="step-desc">Claude reads the full enrichment context and returns a scored assessment: ICP fit rating (1–5), trigger strength, and a one-sentence "why reach out now" summary written in plain English for the rep.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Salesforce Sync — Push enriched fields and scores back</div>
+            <div class="step-desc">Enriched fields, AI score, and trigger summary written back to Salesforce automatically. Custom field on the lead/contact record surfaces the "why now" summary directly in the rep's workflow.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">06</div>
+          <div class="step-content">
+            <div class="step-title">Sequence Trigger — Auto-enroll high-scoring prospects in Outreach</div>
+            <div class="step-desc">Prospects scoring above threshold are enrolled in the appropriate Outreach sequence automatically. Below-threshold records are flagged for human review rather than silently dropped.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Results -->
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">Less time researching. Better targeting. More pipeline from the same team.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">~80%</span>
+          <div class="result-label">Research time eliminated</div>
+          <div class="result-desc">Per-rep manual research dropped from ~2.5 hrs/day to under 30 minutes — recaptured as active selling time.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">85%+</span>
+          <div class="result-label">CRM data completeness</div>
+          <div class="result-desc">Salesforce records went from ~35% field population to 85%+ — enough for personalization at scale.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Real-time</span>
+          <div class="result-label">Signal freshness</div>
+          <div class="result-desc">Buying signals refresh continuously. Reps are always working with current data, not 90-day-old records.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Signal-led</span>
+          <div class="result-label">Outreach shift</div>
+          <div class="result-desc">Reps moved from spray-and-pray sequencing to trigger-based outreach — leading with the "why now" the AI surfaces.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Takeaways -->
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What I'd tell anyone building this.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">💡</span>
+          <span><strong>Rep adoption is the only metric that matters at launch.</strong> The most technically sophisticated enrichment system fails if reps don't trust the data. Start with one or two high-signal fields and prove accuracy before expanding. Trust is earned record by record.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🔁</span>
+          <span><strong>Waterfalls beat single-source enrichment every time.</strong> No single provider has 100% coverage. Building the logic to try source A, fall back to B, then C is annoying to set up but results in dramatically higher completion rates.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🤖</span>
+          <span><strong>LLMs are best used for synthesis, not raw data retrieval.</strong> Don't ask Claude to find a company's revenue — ask it to read 10 signals and write a one-sentence "why now" that a rep could copy into an email. That's where AI adds unique value.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">⚠️</span>
+          <span><strong>Build the human-review path before you build the automation.</strong> High-scoring auto-enrollments are great. But you need a clear process for the 30% that score below threshold — otherwise they fall into a void and no one notices.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</div><!-- /cs-body -->
+
+<!-- CTA -->
+<div class="cs-cta">
+  <div class="container">
+    <h2>Need an enrichment system like this?</h2>
+    <p>I build Clay workflows, enrichment pipelines, and AI scoring layers for GTM teams as standalone projects. Typical timeline: 4–6 weeks from scoping to live.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary">
+        <i data-lucide="mail" width="15" height="15"></i> Get in Touch
+      </a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT NAV -->
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <div></div><!-- spacer -->
+      <a href="lead-routing.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">Lead Routing Re-Architecture</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshannlal@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/roshan-lal" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

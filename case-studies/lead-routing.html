@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Lead Routing Re-Architecture — How Roshan Lal rebuilt Postman's routing model from scratch, achieving a 90% improvement in speed-to-lead." />
+  <meta property="og:title" content="Lead Routing Re-Architecture — Roshan Lal" />
+  <meta property="og:description" content="Rebuilt Postman's FY25 routing model on ZoomInfo + RingLead — cutting speed-to-lead from 4+ hours to under 25 minutes." />
+  <title>Lead Routing Re-Architecture — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-green">Live</span>
+      <span class="cs-company">Postman</span>
+    </div>
+    <h1 class="cs-title">Lead Routing Re-Architecture</h1>
+    <p class="cs-tagline">Rebuilt a 4-year-old routing model from scratch — replacing 200+ brittle rules with a clean, data-driven design that cut speed-to-lead from 4+ hours to under 25 minutes.</p>
+    <div class="cs-tags">
+      <span class="tag">RingLead</span>
+      <span class="tag">ZoomInfo</span>
+      <span class="tag">Salesforce</span>
+      <span class="tag">LeanData</span>
+      <span class="tag">Routing Logic</span>
+      <span class="tag">Territory Design</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">90%</span>
+        <span class="cs-stat-lbl">Improvement in speed-to-lead</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">&lt;2%</span>
+        <span class="cs-stat-lbl">Misroute rate (down from 30%+)</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">200→40</span>
+        <span class="cs-stat-lbl">Routing rules (80% simplification)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">A routing model built for the company 4 years ago — running a company 10x that size today.</h2>
+      <p>Postman's lead routing had accumulated four years of band-aids. Every new territory, new product line, and new market segment added rules on top of existing rules — until the model had over 200 active routing rules that almost nobody fully understood.</p>
+      <p>The consequences were significant. <strong>Speed-to-lead averaged over 4 hours</strong> on inbound leads. Competitors known for aggressive outbound were reaching our prospects before our own reps did. And with a <strong>30%+ misroute rate</strong>, reps were constantly flagging leads they shouldn't own — burning goodwill and eating ops bandwidth.</p>
+
+      <div class="callout callout-amber">
+        <strong>The speed-to-lead problem was costing pipeline, not just annoying reps.</strong> Industry data consistently shows that responding within 5 minutes vs. 30 minutes improves qualification rates by 21x. We were averaging 4+ hours. Every hour of delay was measurable revenue risk.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>200+ routing rules</strong> with no clear ownership — nobody could trace why a lead went where it did</li>
+        <li><strong>Data quality at the root:</strong> bad company matching meant routing decisions were made on wrong firmographics</li>
+        <li><strong>No SLA enforcement</strong> — leads could sit uncontacted for days with no alert or escalation</li>
+        <li><strong>Brittle to change:</strong> any GTM motion update required 2-week routing change requests through IT</li>
+        <li><strong>Rep conflicts:</strong> overlapping territory logic created constant "who owns this?" disputes</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Audit first. Identify root causes. Redesign around principles, not patches.</h2>
+      <p>The instinct when something is broken is to add more rules to fix the gaps. I went the opposite direction: <strong>start from zero and rebuild with a small set of clear principles</strong>.</p>
+      <p>Before touching any tooling, I spent two weeks in pure audit mode — mapping every routing rule to a business owner, pulling a sample of 500 recent leads to trace their actual routing path, and interviewing reps and ops to identify the most common failure modes.</p>
+
+      <p>Three root causes emerged:</p>
+      <ul class="cs-list">
+        <li><strong>Data quality:</strong> ZoomInfo company matching was failing on ~25% of records — leads being routed on wrong company size or segment</li>
+        <li><strong>Logic complexity:</strong> 200 rules had so many exceptions and overrides that edge cases broke silently</li>
+        <li><strong>No governance:</strong> rules were added but never removed — the model only grew, never shrank</li>
+      </ul>
+
+      <p>The new design was built around five clean routing principles: <strong>named account ownership first → ICP tier → geo territory → segment → overflow pool</strong>. Any lead could be traced to one of five decisions. No exceptions without explicit sign-off.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">Normalize data upstream, simplify logic downstream, and enforce SLAs automatically.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Data normalization layer — ZoomInfo Match & Dedupe</div>
+            <div class="step-desc">Before any routing decision, every incoming lead runs through ZoomInfo to normalize company name, firmographic data, and employee count. This single step fixed ~80% of the misroute problem at the root.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Routing tree — Rebuilt in RingLead with 40 clean rules</div>
+            <div class="step-desc">Five-layer priority model in RingLead: named accounts → ICP tier → geo → segment → overflow. 40 rules covering 95%+ of cases. Every rule has a documented owner and a sunset review date.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">SLA enforcement — Automated alerts and escalations</div>
+            <div class="step-desc">Salesforce Process Builder monitors time-to-first-contact. Alert to rep at 30 min → manager CC at 60 min → auto re-route to overflow at 90 min. No lead goes cold silently.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Routing audit dashboard — Real-time misroute visibility</div>
+            <div class="step-desc">Salesforce report showing every lead where ownership was changed within 48 hours of assignment (the proxy for a misroute). Reviewed weekly with the RevOps team to catch drift early.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Documentation and governance — Routing decision tree</div>
+            <div class="step-desc">Full routing logic published as a Confluence doc with a visual decision tree. Any new rule request goes through a change review with business justification required. Quarterly audit built into the RevOps calendar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">From a 4-hour average to under 25 minutes. From constant rep conflicts to near-zero misroutes.</h2>
+
+      <div class="compare">
+        <div class="compare-box">
+          <div class="compare-label before">Before</div>
+          <div class="compare-items">
+            <div class="compare-item">⏱ Speed-to-lead: 4+ hours average</div>
+            <div class="compare-item">❌ Misroute rate: 30%+</div>
+            <div class="compare-item">📋 200+ routing rules, no clear owners</div>
+            <div class="compare-item">🔧 2-week change request cycle</div>
+            <div class="compare-item">🔕 No SLA alerts or escalations</div>
+          </div>
+        </div>
+        <div class="compare-box">
+          <div class="compare-label after">After</div>
+          <div class="compare-items">
+            <div class="compare-item">⚡ Speed-to-lead: under 25 minutes</div>
+            <div class="compare-item">✅ Misroute rate: under 2%</div>
+            <div class="compare-item">📋 40 clean rules with documented owners</div>
+            <div class="compare-item">🔧 2-day change turnaround</div>
+            <div class="compare-item">🔔 30/60/90-min SLA alerts + auto-reroute</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-grid" style="margin-top: 14px;">
+        <div class="result-card">
+          <span class="result-num">90%</span>
+          <div class="result-label">Speed-to-lead improvement</div>
+          <div class="result-desc">From a 4+ hour average to under 25 minutes, measured across all inbound lead sources.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">~0</span>
+          <div class="result-label">Rep/rep routing conflicts</div>
+          <div class="result-desc">Disputes over lead ownership dropped to near zero in the first year following launch.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What I learned rebuilding this from scratch.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">🧹</span>
+          <span><strong>Fix the data before fixing the logic.</strong> Most routing problems aren't routing problems — they're data quality problems. Garbage in, garbage routed. ZoomInfo normalization upstream fixed 80% of our misroutes before we changed a single routing rule.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🧱</span>
+          <span><strong>Simple models beat complex models every time.</strong> 40 rules you understand beats 200 rules nobody does. The goal isn't to handle every edge case in the logic — it's to handle 95% cleanly and have a human review process for the rest.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📐</span>
+          <span><strong>Build governance in from day one, not as an afterthought.</strong> The reason routing models decay is that rules are added but never removed. A quarterly audit and a change request process sounds bureaucratic — but it's what keeps the system clean for years, not months.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📊</span>
+          <span><strong>You can't improve what you can't measure.</strong> The routing audit dashboard was the most underrated part of this project. Without a real-time misroute metric, drift happens invisibly. The dashboard made routing health a first-class operational metric.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Routing errors costing you pipeline?</h2>
+    <p>I specialize in routing re-architectures for high-growth GTM teams — from audit through go-live. Typical engagement: 6–8 weeks.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="ai-enrichment-engine.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">AI-Powered Enrichment Engine</span>
+      </a>
+      <a href="flexible-consumption.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">Flexible Consumption GTM Launch</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshannlal@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/roshan-lal" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
