@@ -655,90 +655,6 @@
       margin-top: 4px;
     }
 
-    /* ==============================================================
-       EXPERIENCE TIMELINE
-    ============================================================== */
-    .timeline { position: relative; padding-left: 24px; }
-
-    /* Vertical gradient line */
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 10px; bottom: 10px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent) 0%, var(--border-mid) 60%, var(--border) 100%);
-    }
-
-    .tl-item {
-      position: relative;
-      padding: 0 0 52px 40px;
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-
-    /* Dot on the line */
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -5.5px; top: 6px;
-      width: 12px; height: 12px;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px var(--accent-soft);
-    }
-
-    .tl-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
-    .tl-company {
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-    .tl-company-sub {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-
-    .tl-period {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    .tl-role {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .tl-bullets { display: flex; flex-direction: column; gap: 9px; }
-
-    .tl-bullet {
-      display: flex;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.62;
-    }
-    .tl-bullet::before {
-      content: '→';
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-    .tl-bullet strong { color: var(--text); font-weight: 600; }
 
     /* ==============================================================
        STACK & SKILLS
@@ -773,13 +689,7 @@
       border: 1px solid var(--border-mid);
       border-radius: var(--r-sm);
       color: var(--text-muted);
-      cursor: default;
-      transition: border-color 0.18s, color 0.18s, background 0.18s;
     }
-    .stack-tag:hover { border-color: var(--accent-border); color: var(--text); background: var(--accent-soft); }
-
-    /* Primary tools get accent styling by default */
-    .stack-tag.hi { border-color: var(--accent-border); color: var(--accent); background: var(--accent-soft); }
 
     /* Certifications */
     .certs-section { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
@@ -1034,7 +944,6 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#stack">Stack</a></li>
       <li class="nav-cta"><a href="#contact">Get in Touch</a></li>
     </ul>
@@ -1067,7 +976,7 @@
       </p>
 
       <p class="hero-tagline">
-        I build the data foundations and AI-powered workflows that revenue teams run on — from CRM architecture and lead routing to agentic automations that eliminate hours of manual work.
+        I design and build the full GTM systems stack — CRM, lead routing, CPQ, data enrichment, and AI-powered workflows — connecting revenue strategy to scalable, repeatable execution.
       </p>
 
       <div class="hero-cta">
@@ -1109,13 +1018,13 @@
       <!-- Left: bio -->
       <div class="about-text reveal">
         <p>
-          I'm a GTM Systems leader with <strong>11+ years</strong> building and scaling revenue infrastructure at high-growth B2B SaaS companies. I've owned the full stack — CRM architecture, lead routing, CPQ, enrichment, and the BI layer — at <strong>Postman, HashiCorp, and Sumo Logic</strong>.
+          I'm a GTM Systems leader with <strong>11+ years</strong> building and scaling revenue infrastructure at high-growth B2B SaaS companies. I've owned the full stack — CRM architecture, data enrichment, lead routing, CPQ, sales engagement, GTM analytics, and agentic AI workflows — at <strong>Postman, HashiCorp, and Sumo Logic</strong>.
         </p>
         <p>
           My work sits at the intersection of systems thinking and hands-on execution. I've built 10-person GTM Systems orgs, driven $5M+ ARR launches, eliminated $300K in annual SaaS spend, and recently layered AI and agentic workflows on top of the traditional RevOps stack.
         </p>
         <p>
-          I'm currently exploring <strong>GTM Engineering and RevOps leadership roles</strong> at companies serious about operationalizing AI in their revenue motion — and available for freelance projects in stack architecture, AI workflow builds, and CPQ.
+          I'm currently exploring <strong>GTM Systems, RevOps, GTM Engineering, and Product Management roles</strong> at companies serious about operationalizing AI in their revenue motion — and available for freelance projects in Salesforce &amp; technology stack architecture and AI workflow builds.
         </p>
         <a href="#contact" class="link-arrow">
           Let's talk <i data-lucide="arrow-right" width="14" height="14"></i>
@@ -1153,7 +1062,7 @@
           <div class="info-icon"><i data-lucide="cpu" width="17" height="17"></i></div>
           <div>
             <div class="info-label">Specialties</div>
-            <div class="info-value">CRM Architecture · Lead Routing · CPQ · AI/Agentic Workflows · RevOps BI</div>
+            <div class="info-value">CRM Architecture · Lead Routing & Territory Design · CPQ & Billing Systems · Sales Engagement · AI/Agentic Workflows · GTM Analytics · Stack Governance</div>
           </div>
         </div>
 
@@ -1370,95 +1279,6 @@
 </section>
 
 
-<!-- ================================================================
-     EXPERIENCE
-================================================================ -->
-<section id="experience" class="section-wrap" aria-labelledby="exp-title">
-  <div class="divider" style="margin-bottom:0;"></div>
-  <div class="container" style="padding-top:96px;">
-
-    <div class="section-hd">
-      <p class="eyebrow">Experience</p>
-      <h2 class="section-title" id="exp-title">11 years building revenue infrastructure.</h2>
-    </div>
-
-    <div class="timeline">
-
-      <!-- Postman -->
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">
-              Postman <span class="tl-company-sub">— API Platform · Series D</span>
-            </div>
-            <div class="tl-role">Senior Manager, Go-To-Market Systems</div>
-          </div>
-          <div class="tl-period">Sep 2023 – Present</div>
-        </div>
-        <div class="tl-bullets">
-          <div class="tl-bullet">Built and scaled a <strong>10-person GTM Systems org</strong> governing a $4M+ annual stack of 20+ tools across Sales, Marketing, and CS.</div>
-          <div class="tl-bullet">Cut <strong>$300K+ in annual SaaS spend</strong> through a comprehensive stack audit — eliminating shelfware, renegotiating vendors, and consolidating overlap.</div>
-          <div class="tl-bullet">Improved <strong>speed-to-lead by 90%</strong> by re-architecting FY25 routing on ZoomInfo + RingLead, replacing brittle legacy logic with a scalable data-driven model.</div>
-          <div class="tl-bullet">Deployed <strong>Clay for AI-powered enrichment</strong> and real-time buying signal surfacing — reducing manual rep research across the outbound motion.</div>
-          <div class="tl-bullet">Deployed Salesforce CPQ with Advanced Approvals globally; implemented Gong Engage for unified sales engagement and conversation intelligence.</div>
-        </div>
-      </div>
-
-      <!-- HashiCorp — Business Systems -->
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">
-              HashiCorp <span class="tl-company-sub">— Cloud Infrastructure · IPO 2021</span>
-            </div>
-            <div class="tl-role">Senior Manager, Business Systems</div>
-          </div>
-          <div class="tl-period">Feb 2022 – Aug 2023</div>
-        </div>
-        <div class="tl-bullets">
-          <div class="tl-bullet">Business Systems lead for the <strong>Flexible Consumption launch</strong> — HashiCorp Cloud's first usage-based billing model, generating <strong>$5M+ ARR in year one</strong>.</div>
-          <div class="tl-bullet">Eliminated manual license fulfillment via Software Delivery automation — removing order-management bottlenecks and accelerating time-to-license for customers.</div>
-        </div>
-      </div>
-
-      <!-- HashiCorp — Business Operations -->
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">
-              HashiCorp <span class="tl-company-sub">— Cloud Infrastructure</span>
-            </div>
-            <div class="tl-role">Senior Manager → Manager, Business Operations</div>
-          </div>
-          <div class="tl-period">Sep 2018 – Jan 2022</div>
-        </div>
-        <div class="tl-bullets">
-          <div class="tl-bullet">Joined as <strong>sole GTM Systems owner</strong> — managed the full stack end-to-end (Salesforce, Marketo, Clearbit, Demandbase, RingLead, LeanData).</div>
-          <div class="tl-bullet">Built a net-new <strong>Marketing BI &amp; Operations function</strong> (2 direct reports) — defined KPIs used in board decks, weekly metrics, and GTM reviews.</div>
-          <div class="tl-bullet">Rolled out Tableau as GTM's primary BI platform across Revenue Marketing, Field Marketing, Partner Marketing, and DevRel.</div>
-        </div>
-      </div>
-
-      <!-- Sumo Logic -->
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">
-              Sumo Logic <span class="tl-company-sub">— Cloud Monitoring · IPO 2020</span>
-            </div>
-            <div class="tl-role">Senior Analyst, Business Operations (GTM Systems Owner)</div>
-          </div>
-          <div class="tl-period">Feb 2017 – Aug 2018</div>
-        </div>
-        <div class="tl-bullets">
-          <div class="tl-bullet">Cut average quoting time by <strong>60%</strong> by leading end-to-end CPQ implementation; owned Salesforce and a $1.5M+ annual GTM stack (Clari, Outreach, LeanData, ZoomInfo, DocuSign).</div>
-          <div class="tl-bullet">Automated territory assignment, lead routing, and pricing approvals; built standardized dashboards for SDR, Field, Channel, and Sales Engineering teams.</div>
-        </div>
-      </div>
-
-    </div><!-- /timeline -->
-  </div>
-</section>
 
 
 <!-- ================================================================
@@ -1477,10 +1297,9 @@
       <div class="stack-row reveal">
         <span class="stack-cat">CRM &amp; CPQ</span>
         <div class="stack-tags">
-          <span class="stack-tag hi">Salesforce Sales Cloud</span>
-          <span class="stack-tag hi">Salesforce CPQ</span>
-          <span class="stack-tag hi">Advanced Approvals</span>
-          <span class="stack-tag">HubSpot</span>
+          <span class="stack-tag">Salesforce Sales Cloud</span>
+          <span class="stack-tag">Salesforce CPQ</span>
+          <span class="stack-tag">Advanced Approvals</span>
           <span class="stack-tag">DocuSign</span>
         </div>
       </div>
@@ -1488,9 +1307,9 @@
       <div class="stack-row reveal">
         <span class="stack-cat">AI &amp; Automation</span>
         <div class="stack-tags">
-          <span class="stack-tag hi">Clay</span>
-          <span class="stack-tag hi">n8n</span>
-          <span class="stack-tag hi">Claude AI</span>
+          <span class="stack-tag">Clay</span>
+          <span class="stack-tag">n8n</span>
+          <span class="stack-tag">Claude AI</span>
           <span class="stack-tag">ChatGPT / OpenAI</span>
           <span class="stack-tag">Zapier</span>
           <span class="stack-tag">Agentic Workflows</span>
@@ -1500,67 +1319,36 @@
       <div class="stack-row reveal">
         <span class="stack-cat">Data &amp; Routing</span>
         <div class="stack-tags">
-          <span class="stack-tag hi">ZoomInfo</span>
-          <span class="stack-tag hi">RingLead</span>
-          <span class="stack-tag hi">LeanData</span>
+          <span class="stack-tag">ZoomInfo</span>
+          <span class="stack-tag">RingLead</span>
+          <span class="stack-tag">LeanData</span>
           <span class="stack-tag">Clearbit</span>
           <span class="stack-tag">Demandbase</span>
         </div>
       </div>
 
       <div class="stack-row reveal">
-        <span class="stack-cat">Sales Engagement</span>
+        <span class="stack-cat">Sales, Marketing &amp; CS</span>
         <div class="stack-tags">
-          <span class="stack-tag hi">Gong</span>
-          <span class="stack-tag hi">Outreach</span>
+          <span class="stack-tag">Gong</span>
+          <span class="stack-tag">Outreach</span>
           <span class="stack-tag">Clari</span>
           <span class="stack-tag">Marketo</span>
+          <span class="stack-tag">Zendesk</span>
         </div>
       </div>
 
       <div class="stack-row reveal">
         <span class="stack-cat">BI &amp; Analytics</span>
         <div class="stack-tags">
-          <span class="stack-tag hi">Tableau</span>
-          <span class="stack-tag hi">Looker</span>
-          <span class="stack-tag">Snowflake</span>
-          <span class="stack-tag">dbt</span>
-          <span class="stack-tag hi">SQL</span>
+          <span class="stack-tag">Tableau</span>
+          <span class="stack-tag">Looker</span>
+          <span class="stack-tag">SQL</span>
         </div>
       </div>
 
     </div>
 
-    <!-- Certifications sub-section -->
-    <div class="certs-section reveal">
-      <p class="eyebrow">Certifications &amp; Education</p>
-      <div class="certs-grid">
-        <div class="cert-card">
-          <span class="icon">☁️</span>
-          <div><div class="cert-name">Salesforce Administrator</div><div class="cert-by">Salesforce</div></div>
-        </div>
-        <div class="cert-card">
-          <span class="icon">💼</span>
-          <div><div class="cert-name">Sales Cloud Consultant</div><div class="cert-by">Salesforce</div></div>
-        </div>
-        <div class="cert-card">
-          <span class="icon">📋</span>
-          <div><div class="cert-name">Business Analyst</div><div class="cert-by">Salesforce</div></div>
-        </div>
-        <div class="cert-card">
-          <span class="icon">🤖</span>
-          <div><div class="cert-name">Google AI Professional</div><div class="cert-by">Google</div></div>
-        </div>
-        <div class="cert-card">
-          <span class="icon">📊</span>
-          <div><div class="cert-name">Google Analytics</div><div class="cert-by">Google</div></div>
-        </div>
-        <div class="cert-card">
-          <span class="icon">🎓</span>
-          <div><div class="cert-name">B.S. Managerial Economics</div><div class="cert-by">UC Davis · 2014</div></div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -1590,21 +1378,21 @@
           <div class="intent-card">
             <div class="intent-card-lbl">For Employers</div>
             <div class="intent-card-title">Open to Full-Time Roles</div>
-            <div class="intent-card-desc">GTM Systems, RevOps leadership, or GTM Engineering at high-growth B2B SaaS companies.</div>
+            <div class="intent-card-desc">GTM Systems, RevOps, GTM Engineering, or Product Management roles at high-growth B2B SaaS companies.</div>
           </div>
           <div class="intent-card">
             <div class="intent-card-lbl">For Clients</div>
             <div class="intent-card-title">Fractional &amp; Project Work</div>
-            <div class="intent-card-desc">Stack audits, AI workflow builds, CPQ implementations, and RevOps architecture on a project or retainer basis.</div>
+            <div class="intent-card-desc">Stack audits, Salesforce implementations, GTM tool deployments, AI workflow builds, and RevOps architecture on a project or retainer basis.</div>
           </div>
         </div>
 
         <div class="contact-links">
-          <a href="mailto:roshannlal@gmail.com" class="contact-link">
+          <a href="mailto:roshanlalsf@gmail.com" class="contact-link">
             <div class="contact-link-icon"><i data-lucide="mail" width="15" height="15"></i></div>
             <div>
               <div class="cl-label">Email</div>
-              <div class="cl-value">roshannlal@gmail.com</div>
+              <div class="cl-value">roshanlalsf@gmail.com</div>
             </div>
           </a>
           <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener noreferrer" class="contact-link">
@@ -1612,13 +1400,6 @@
             <div>
               <div class="cl-label">LinkedIn</div>
               <div class="cl-value">linkedin.com/in/roshannlal</div>
-            </div>
-          </a>
-          <a href="https://github.com/roshan-lal" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <div class="contact-link-icon"><i data-lucide="github" width="15" height="15"></i></div>
-            <div>
-              <div class="cl-label">GitHub</div>
-              <div class="cl-value">github.com/roshan-lal</div>
             </div>
           </a>
         </div>
@@ -1679,9 +1460,8 @@
       Roshan Lal &nbsp;·&nbsp; San Francisco, CA &nbsp;·&nbsp; 2026
     </div>
     <nav class="footer-links" aria-label="Footer navigation">
-      <a href="mailto:roshannlal@gmail.com">Email</a>
+      <a href="mailto:roshanlalsf@gmail.com">Email</a>
       <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/roshan-lal" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
 </footer>
@@ -1754,10 +1534,10 @@
         form.style.display = 'none';
         success.style.display = 'block';
       } else {
-        alert('Something went wrong — please email me directly at roshannlal@gmail.com');
+        alert('Something went wrong — please email me directly at roshanlalsf@gmail.com');
       }
     } catch {
-      alert('Something went wrong — please email me directly at roshannlal@gmail.com');
+      alert('Something went wrong — please email me directly at roshanlalsf@gmail.com');
     }
   });
 </script>
