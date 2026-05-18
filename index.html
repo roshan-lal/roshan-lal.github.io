@@ -55,10 +55,10 @@
       --text-dim:     #3c4560;
 
       /* Accent (violet) */
-      --accent:        #7c6dff;
-      --accent-soft:   rgba(124, 109, 255, 0.12);
-      --accent-border: rgba(124, 109, 255, 0.30);
-      --accent-glow:   rgba(124, 109, 255, 0.25);
+      --accent:        #4f80ff;
+      --accent-soft:   rgba(79, 128, 255, 0.11);
+      --accent-border: rgba(79, 128, 255, 0.28);
+      --accent-glow:   rgba(79, 128, 255, 0.20);
 
       /* Status green */
       --green:      #34d399;
@@ -174,7 +174,7 @@
       color: #fff;
     }
     .btn-primary:hover {
-      background: #6554e8;
+      background: #3a6bf0;
       transform: translateY(-1px);
       box-shadow: 0 6px 24px var(--accent-glow);
     }
@@ -287,7 +287,7 @@
       padding: 7px 18px;
       font-weight: 500;
     }
-    .nav-links .nav-cta a:hover { background: #6554e8; }
+    .nav-links .nav-cta a:hover { background: #3a6bf0; }
 
     /* Hamburger (mobile) */
     .nav-toggle {
@@ -507,7 +507,8 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
-    .project-card:last-child { grid-column: 1 / -1; }
+    .project-card.featured { grid-column: 1 / -1; }
+    .project-card:not(.featured):last-child { grid-column: 1 / -1; }
 
     /* ── Project card ── */
     .project-card {
