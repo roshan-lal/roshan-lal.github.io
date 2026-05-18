@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: GTM Analytics & KPI Framework — How Roshan Lal built the metrics infrastructure and analytical frameworks powering weekly sales reviews, monthly GTM reviews, and quarterly board decks." />
+  <meta property="og:title" content="GTM Analytics & KPI Framework — Roshan Lal" />
+  <meta property="og:description" content="Defined the KPIs and analytical frameworks used in weekly marketing and sales metrics, monthly GTM reviews, and quarterly board decks — built on Salesforce and Tableau." />
+  <title>GTM Analytics & KPI Framework — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-green">Live</span>
+      <span class="cs-company">Infrastructure Software · Pre-IPO</span>
+    </div>
+    <h1 class="cs-title">GTM Analytics & KPI Framework</h1>
+    <p class="cs-tagline">Built the metrics infrastructure and analytical frameworks that powered weekly marketing and sales reviews, monthly GTM reporting, and quarterly board decks — establishing a single source of truth for revenue performance across a pre-IPO org.</p>
+    <div class="cs-tags">
+      <span class="tag">Salesforce</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">KPI Framework</span>
+      <span class="tag">BI Evaluation</span>
+      <span class="tag">GTM Reporting</span>
+      <span class="tag">Board Metrics</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">3 cadences</span>
+        <span class="cs-stat-lbl">Weekly, monthly, and quarterly</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">One source</span>
+        <span class="cs-stat-lbl">Of truth for GTM metrics</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">Board-ready</span>
+        <span class="cs-stat-lbl">Automated quarterly reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">Every team was running their own numbers. Board decks were built manually every quarter. No one agreed on what "pipeline" meant.</h2>
+      <p>At a pre-IPO infrastructure software company, the GTM org had grown fast enough that each function — Sales, Marketing, and CS — had developed their own reporting cadence, their own metric definitions, and their own data pulls. The result was the classic symptom of analytics at scale: <strong>every leadership meeting started with 15 minutes of arguing about whose numbers were right</strong> before the actual work could begin.</p>
+      <p>Quarterly board decks were built manually by a RevOps analyst spending 2–3 days pulling data from Salesforce reports, reformatting in Excel, and assembling slides — a process so fragile that a single data refresh could cascade into hours of reconciliation. There was no BI layer connecting the underlying CRM data to the dashboards executives were making decisions from.</p>
+
+      <div class="callout">
+        <strong>The problem with inconsistent metrics isn't just efficiency — it's trust.</strong> When Sales and Marketing show up to a GTM review with different pipeline numbers, the conversation shifts from "what do we do about the gap?" to "whose number is real?" That trust problem compounds: teams stop bringing real problems to reviews because the metrics debate consumes the agenda.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>No agreed KPI definitions:</strong> "pipeline" meant different things to Sales, Marketing, and Finance</li>
+        <li><strong>Fragmented reporting:</strong> each function maintained their own Salesforce reports and spreadsheets with no reconciliation</li>
+        <li><strong>Manual board prep:</strong> quarterly board deck data required 2–3 days of manual pulling and reformatting</li>
+        <li><strong>No BI infrastructure:</strong> executive dashboards were static PowerPoint slides, not live data connections</li>
+        <li><strong>Reporting inconsistency:</strong> month-end close regularly surfaced discrepancies between Sales, Finance, and CS numbers on the same metrics</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Define the metrics before building the dashboards. Get executive alignment on KPI definitions first — everything else is implementation.</h2>
+      <p>The instinct in analytics projects is to start building dashboards. I started with a KPI definition workshop instead. <strong>A dashboard built on undefined metrics just automates the disagreement</strong> — you get faster, prettier charts of numbers nobody agrees on. The definitional work had to come first.</p>
+      <p>I ran a 3-session working series with the VP of Sales, CMO, and CFO to define the canonical GTM metric set: every KPI named, defined, sourced (which Salesforce fields), and agreed-upon as the single version that would be used in all reporting. This sounds like it should take a week. It took four. The disagreements were real, the edge cases were meaningful, and the output — a one-page KPI glossary with field-level definitions — became one of the most-referenced documents in the company.</p>
+      <p>For BI tooling, I led a formal evaluation of Tableau as the primary reporting layer. The evaluation covered data connectivity to Salesforce, performance at our data volume, dashboard sharing and permissions models, and total cost of ownership. Tableau was selected and became the foundation for all live GTM dashboards going forward.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">KPI glossary → Tableau evaluation → Salesforce data foundation → dashboards by cadence.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">KPI definition workshop — Canonical metric set across Sales, Marketing, CS</div>
+            <div class="step-desc">Three working sessions with GTM, Finance, and Marketing leadership to define every KPI: metric name, precise definition, Salesforce source fields, inclusion/exclusion rules, and responsible owner. Output: a one-page KPI glossary covering 24 metrics across pipeline, funnel, revenue, and customer health — signed off by VP Sales, CMO, and CFO. This became the reference document for all GTM reporting.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">BI tool evaluation — Selecting Tableau as the reporting layer</div>
+            <div class="step-desc">Ran a structured evaluation of BI platforms with Tableau as the primary candidate. Evaluated against: native Salesforce connector performance, live data refresh capabilities, dashboard sharing and embedding, permission models for executive vs. rep access, and long-term licensing cost. Tableau selected over alternatives for its Salesforce integration depth and self-service capabilities for non-technical stakeholders.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Salesforce data foundation — Clean fields, consistent objects</div>
+            <div class="step-desc">Audited Salesforce for data quality issues that would surface in dashboards: null required fields, inconsistent picklist values, duplicate account records, and misaligned opportunity stage definitions. Fixed upstream data issues before building downstream dashboards — otherwise cleaning the dashboards becomes a permanent job.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">Weekly dashboards — Sales and Marketing performance</div>
+            <div class="step-desc">Built weekly Sales dashboard: pipeline by stage, new pipeline created, open opportunities by owner, and weekly activity metrics. Weekly Marketing dashboard: MQL volume, MQL-to-SQL conversion, channel breakdown, and campaign performance. Both connected live to Salesforce with automatic refresh — no manual data pull required before Monday morning reviews.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Monthly GTM review and quarterly board deck</div>
+            <div class="step-desc">Monthly GTM review dashboard: full-funnel view from MQL through closed-won, ARR attainment vs. target, net revenue retention, and forecasted quarter. Quarterly board deck built as a Tableau story — data-connected slides that refresh automatically. Board prep cycle compressed from 2–3 analyst days to a 30-minute QA review before each board meeting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">One source of truth. No more metric debates. Board prep in 30 minutes instead of 3 days.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">Single source</span>
+          <div class="result-label">Of truth for GTM metrics</div>
+          <div class="result-desc">KPI glossary and Tableau dashboards became the shared reference across all GTM reviews. Metric debates dropped from a standing agenda item to a rarity.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">30 min</span>
+          <div class="result-label">Board prep (from 2–3 days)</div>
+          <div class="result-desc">Quarterly board deck data refresh compressed from a multi-day analyst exercise to a 30-minute QA review — with live Tableau connections handling the rest automatically.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">3 cadences</span>
+          <div class="result-label">Fully automated</div>
+          <div class="result-desc">Weekly sales, weekly marketing, monthly GTM, and quarterly board reporting all running from live dashboards — no manual pulls, no spreadsheet reconciliation.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">24 KPIs</span>
+          <div class="result-label">Defined and agreed</div>
+          <div class="result-desc">Canonical metric set covering pipeline, funnel, revenue, and customer health — signed off by VP Sales, CMO, and CFO, with field-level definitions for every metric.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What this project taught me about GTM analytics at scale.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">📖</span>
+          <span><strong>KPI definitions are the hardest deliverable.</strong> The dashboards are the easy part — a good Tableau developer can build them fast. The hard part is getting three VPs to agree on what "pipeline" means. That alignment work takes time and political capital, but it's what makes all the dashboard work actually useful.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🧱</span>
+          <span><strong>Fix the data before building the dashboards.</strong> A beautiful Tableau dashboard built on dirty Salesforce data is still a dirty dashboard — it just looks more authoritative. Upstream data quality work is unglamorous but non-optional. Every hour spent cleaning Salesforce fields saves ten hours of dashboard reconciliation downstream.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🎯</span>
+          <span><strong>Design for the audience, not the analyst.</strong> Board decks need a different design philosophy than weekly ops dashboards. Board members want 3–4 charts that tell a story; they don't want 20 panels of data. Keep the detailed operational view separate from the executive narrative view.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🔄</span>
+          <span><strong>Metrics frameworks need maintenance, not just deployment.</strong> The KPI glossary wasn't a one-time deliverable — it needed quarterly reviews as the business changed. A metric that was meaningful in year one (say, trial conversion rate) may be irrelevant in year three. Schedule the governance cadence at launch, not when the framework starts to drift.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Need a GTM metrics framework?</h2>
+    <p>If your team is fighting about whose numbers are right instead of what to do about them, I can help build the KPI definitions, data foundation, and reporting infrastructure to fix it.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="salesforce-cpq.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">Salesforce CPQ Deployment</span>
+      </a>
+      <div></div><!-- last project, no next -->
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshanlalsf@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

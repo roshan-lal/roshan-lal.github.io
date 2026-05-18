@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ── SEO ── -->
-  <meta name="description" content="Roshan Lal — GTM Systems Leader & AI Workflow Architect. 11+ years building revenue infrastructure at Postman, HashiCorp, and Sumo Logic. Open to roles and freelance." />
+  <meta name="description" content="Roshan Lal — GTM Systems Leader & AI Workflow Architect. 11+ years building revenue infrastructure at Postman, HashiCorp, and Sumo Logic. Open to roles and consulting." />
   <meta name="keywords" content="GTM Systems, RevOps, Salesforce, AI Automation, Revenue Operations, Roshan Lal, Clay, n8n, CPQ" />
   <link rel="canonical" href="https://roshan-lal.github.io/" />
 
@@ -54,11 +54,11 @@
       --text-muted:   #7b8599;
       --text-dim:     #3c4560;
 
-      /* Accent (blue) */
-      --accent:        #4f80ff;
-      --accent-soft:   rgba(79, 128, 255, 0.11);
-      --accent-border: rgba(79, 128, 255, 0.28);
-      --accent-glow:   rgba(79, 128, 255, 0.22);
+      /* Accent (violet) */
+      --accent:        #7c6dff;
+      --accent-soft:   rgba(124, 109, 255, 0.12);
+      --accent-border: rgba(124, 109, 255, 0.30);
+      --accent-glow:   rgba(124, 109, 255, 0.25);
 
       /* Status green */
       --green:      #34d399;
@@ -174,7 +174,7 @@
       color: #fff;
     }
     .btn-primary:hover {
-      background: #3a6bf0;
+      background: #6554e8;
       transform: translateY(-1px);
       box-shadow: 0 6px 24px var(--accent-glow);
     }
@@ -287,7 +287,7 @@
       padding: 7px 18px;
       font-weight: 500;
     }
-    .nav-links .nav-cta a:hover { background: #3a6bf0; }
+    .nav-links .nav-cta a:hover { background: #6554e8; }
 
     /* Hamburger (mobile) */
     .nav-toggle {
@@ -417,6 +417,18 @@
       grid-template-columns: 1.1fr 0.9fr;
       gap: 80px;
       align-items: start;
+    }
+
+    .about-photo {
+      margin-bottom: 28px;
+    }
+    .about-photo img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-mid);
+      display: block;
     }
 
     .about-text p {
@@ -966,7 +978,7 @@
       <!-- Availability badge -->
       <div class="hero-badge">
         <span class="hero-badge-dot" aria-hidden="true"></span>
-        <span>Open to Roles &amp; Freelance</span>
+        <span>Open to Roles &amp; Consulting</span>
       </div>
 
       <h1 class="hero-name" id="hero-name">Roshan Lal</h1>
@@ -1017,6 +1029,9 @@
 
       <!-- Left: bio -->
       <div class="about-text reveal">
+        <div class="about-photo">
+          <img src="assets/profile.jpg" alt="Roshan Lal" />
+        </div>
         <p>
           I'm a GTM Systems leader with <strong>11+ years</strong> building and scaling revenue infrastructure at high-growth B2B SaaS companies. I've owned the full stack — CRM architecture, data enrichment, lead routing, CPQ, sales engagement, GTM analytics, and agentic AI workflows — at <strong>Postman, HashiCorp, and Sumo Logic</strong>.
         </p>
@@ -1024,7 +1039,7 @@
           My work sits at the intersection of systems thinking and hands-on execution. I've built 10-person GTM Systems orgs, driven $5M+ ARR launches, eliminated $300K in annual SaaS spend, and recently layered AI and agentic workflows on top of the traditional RevOps stack.
         </p>
         <p>
-          I'm currently exploring <strong>GTM Systems, RevOps, GTM Engineering, and Product Management roles</strong> at companies serious about operationalizing AI in their revenue motion — and available for freelance projects in Salesforce &amp; technology stack architecture and AI workflow builds.
+          I'm currently exploring <strong>GTM Systems, RevOps, GTM Engineering, and Product Management roles</strong> at companies serious about operationalizing AI in their revenue motion — and available for consulting engagements in Salesforce &amp; technology stack architecture and AI workflow builds.
         </p>
         <a href="#contact" class="link-arrow">
           Let's talk <i data-lucide="arrow-right" width="14" height="14"></i>
@@ -1109,7 +1124,7 @@
           <span class="impact-chip">Real-time buying signals</span>
         </div>
         <p class="proj-desc">
-          Built a Clay-based enrichment workflow at Postman that surfaces real-time buying signals for outbound reps — replacing fragmented manual research with an automated pipeline that enriches, scores, and routes prospects based on fit and intent.
+          Built a Clay-based enrichment workflow that surfaces real-time buying signals for outbound reps — replacing fragmented manual research with an automated pipeline that enriches, scores, and routes prospects based on fit and intent.
         </p>
         <div class="proj-tags">
           <span class="tag">Clay</span>
@@ -1119,7 +1134,7 @@
           <span class="tag">Outreach</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Postman</span>
+          <span class="proj-company">Developer Tools · Series D</span>
           <a href="case-studies/ai-enrichment-engine.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1150,7 +1165,7 @@
           <span class="tag">Routing Logic</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Postman</span>
+          <span class="proj-company">Developer Tools · Series D</span>
           <a href="case-studies/lead-routing.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1171,7 +1186,7 @@
           <span class="impact-chip">Usage-based billing</span>
         </div>
         <p class="proj-desc">
-          Served as Business Systems lead for HashiCorp Cloud's usage-based billing launch — the company's first consumption model. Partnered with GTM, Product, and Engineering to wire the full order-to-revenue flow: entitlements, metering, CRM sync, and revenue recognition.
+          Business Systems lead for a cloud platform's usage-based billing launch — the company's first consumption model. Partnered with GTM, Product, and Engineering to wire the full order-to-revenue flow: entitlements, metering, CRM sync, and revenue recognition.
         </p>
         <div class="proj-tags">
           <span class="tag">Salesforce CPQ</span>
@@ -1181,7 +1196,7 @@
           <span class="tag">Rev Rec</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">HashiCorp</span>
+          <span class="proj-company">Cloud Infrastructure · IPO</span>
           <a href="case-studies/flexible-consumption.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1236,7 +1251,7 @@
             <span class="impact-chip">Zero capability loss</span>
           </div>
           <p class="proj-desc">
-            Led a comprehensive audit of 20+ GTM tools at Postman — identifying shelfware, renegotiating vendor contracts, and consolidating overlapping tooling across Sales, Marketing, and CS. Delivered $300K+ in annual SaaS savings without sacrificing a single critical capability. Established ongoing governance to prevent future stack sprawl.
+            Led a comprehensive audit of 20+ GTM tools — identifying shelfware, renegotiating vendor contracts, and consolidating overlapping tooling across Sales, Marketing, and CS. Delivered $300K+ in annual SaaS savings without sacrificing a single critical capability. Established ongoing governance to prevent future stack sprawl.
           </p>
           <div class="proj-tags" style="margin-top:14px;">
             <span class="tag">Stack Audit</span>
@@ -1245,7 +1260,7 @@
             <span class="tag">Cost Optimization</span>
           </div>
           <div class="proj-footer" style="margin-top:20px;">
-            <span class="proj-company">Postman</span>
+            <span class="proj-company">Developer Tools · Series D</span>
             <a href="case-studies/stack-consolidation.html" class="link-arrow">
               View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
             </a>
@@ -1266,12 +1281,103 @@
             </div>
             <div style="height:1px;background:var(--border-mid);"></div>
             <div>
-              <div class="proj-stat-lbl" style="margin-bottom:4px;">Company</div>
-              <div style="font-size:14px;font-weight:600;">Postman</div>
+              <div class="proj-stat-lbl" style="margin-bottom:4px;">Sector</div>
+              <div style="font-size:14px;font-weight:600;">Developer Tools</div>
             </div>
           </div>
         </div>
 
+      </div>
+
+      <!-- ── 6. GTM Org Build ── -->
+      <div class="project-card reveal">
+        <div class="proj-top">
+          <div class="proj-icon" aria-hidden="true">🏗️</div>
+          <div class="badges">
+            <span class="badge badge-green">Live</span>
+          </div>
+        </div>
+        <h3 class="proj-title">Building a GTM Systems Org</h3>
+        <div class="proj-impact">
+          <span class="impact-chip">10-person team</span>
+          <span class="impact-chip">$4M+ stack governed</span>
+        </div>
+        <p class="proj-desc">
+          Hired and scaled a 10-person GTM Systems organization — Salesforce Admins, Developers, and BSMs — governing a $4M+ annual SaaS stack across Sales, Marketing, and CS. Established delivery standards, change management, and operational SLAs for a hypergrowth GTM motion.
+        </p>
+        <div class="proj-tags">
+          <span class="tag">Org Design</span>
+          <span class="tag">Team Building</span>
+          <span class="tag">Salesforce</span>
+          <span class="tag">Change Management</span>
+          <span class="tag">SaaS Governance</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-company">Developer Tools · Series D</span>
+          <a href="case-studies/gtm-org-build.html" class="link-arrow">
+            View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 7. Salesforce CPQ ── -->
+      <div class="project-card reveal reveal-d1">
+        <div class="proj-top">
+          <div class="proj-icon" aria-hidden="true">📄</div>
+          <div class="badges">
+            <span class="badge badge-green">Shipped</span>
+          </div>
+        </div>
+        <h3 class="proj-title">Salesforce CPQ Deployment</h3>
+        <div class="proj-impact">
+          <span class="impact-chip">Days → Hours approvals</span>
+          <span class="impact-chip">Zero pricing errors</span>
+        </div>
+        <p class="proj-desc">
+          Replaced standard Salesforce quoting with a full CPQ + Advanced Approvals deployment across the global sales org — eliminating email-chain approval workflows, enforcing pricing compliance, and accelerating quote-to-cash for a complex multi-product catalog.
+        </p>
+        <div class="proj-tags">
+          <span class="tag">Salesforce CPQ</span>
+          <span class="tag">Advanced Approvals</span>
+          <span class="tag">Quote-to-Cash</span>
+          <span class="tag">DocuSign</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-company">Infrastructure Software · Pre-IPO</span>
+          <a href="case-studies/salesforce-cpq.html" class="link-arrow">
+            View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── 8. GTM Analytics ── -->
+      <div class="project-card reveal">
+        <div class="proj-top">
+          <div class="proj-icon" aria-hidden="true">📊</div>
+          <div class="badges">
+            <span class="badge badge-green">Live</span>
+          </div>
+        </div>
+        <h3 class="proj-title">GTM Analytics & KPI Framework</h3>
+        <div class="proj-impact">
+          <span class="impact-chip">Single source of truth</span>
+          <span class="impact-chip">Board-ready reporting</span>
+        </div>
+        <p class="proj-desc">
+          Built the metrics infrastructure and analytical frameworks powering weekly sales and marketing reviews, monthly GTM reporting, and quarterly board decks — establishing canonical KPI definitions and a live Tableau layer on top of Salesforce data.
+        </p>
+        <div class="proj-tags">
+          <span class="tag">Salesforce</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">KPI Framework</span>
+          <span class="tag">GTM Reporting</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-company">Infrastructure Software · Pre-IPO</span>
+          <a href="case-studies/gtm-analytics.html" class="link-arrow">
+            View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
+          </a>
+        </div>
       </div>
 
     </div><!-- /projects-grid -->
@@ -1396,7 +1502,7 @@
             </div>
           </a>
           <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <div class="contact-link-icon"><i data-lucide="linkedin" width="15" height="15"></i></div>
+            <div class="contact-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
             <div>
               <div class="cl-label">LinkedIn</div>
               <div class="cl-value">linkedin.com/in/roshannlal</div>
