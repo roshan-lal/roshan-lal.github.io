@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Salesforce CPQ Deployment — How Roshan Lal replaced standard quoting with Salesforce CPQ + Advanced Approvals across a global sales org, accelerating quote-to-cash and improving commercial compliance." />
+  <meta property="og:title" content="Salesforce CPQ Deployment — Roshan Lal" />
+  <meta property="og:description" content="Deployed Salesforce CPQ with Advanced Approvals across a global sales org — replacing manual approval chains, eliminating quote errors, and improving commercial compliance." />
+  <title>Salesforce CPQ Deployment — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-green">Shipped</span>
+      <span class="cs-company">Infrastructure Software · Pre-IPO</span>
+    </div>
+    <h1 class="cs-title">Salesforce CPQ Deployment</h1>
+    <p class="cs-tagline">Replaced standard Salesforce quoting with a full CPQ + Advanced Approvals deployment across the global sales org — eliminating email-chain approval workflows, enforcing pricing compliance, and accelerating quote-to-cash velocity for a complex, multi-product catalog.</p>
+    <div class="cs-tags">
+      <span class="tag">Salesforce CPQ</span>
+      <span class="tag">Advanced Approvals</span>
+      <span class="tag">Quote-to-Cash</span>
+      <span class="tag">DocuSign</span>
+      <span class="tag">Commercial Compliance</span>
+      <span class="tag">RevOps</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">Days → Hours</span>
+        <span class="cs-stat-lbl">Approval cycle time reduction</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">100%</span>
+        <span class="cs-stat-lbl">Global sales org on CPQ</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">Zero</span>
+        <span class="cs-stat-lbl">Pricing errors post-launch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">A global sales org on standard Salesforce quoting. Manual approvals via email chains. Pricing errors slipping through to contracts.</h2>
+      <p>At a pre-IPO infrastructure software company with a complex multi-product catalog and a global sales org, the quoting process had outgrown its tooling. The company was running on <strong>standard Salesforce quoting functionality</strong> — a native feature that works fine for simple, single-product deals but breaks down under the pressure of tiered pricing, bundle logic, multi-year discounting, and non-standard commercial terms.</p>
+      <p>The approval process was worse. There was no system of record for deal approvals — discounts above threshold were routed via email to managers, VP of Sales, and Finance in a chain that could stretch across time zones and take days to complete. Deals were sitting approved-but-not-signed because the commercial process had no automation. And with no enforcement mechanism, <strong>pricing exceptions were proliferating</strong>: non-standard terms were making it into contracts because there was no system to catch them.</p>
+
+      <div class="callout callout-amber">
+        <strong>Standard quoting works until it doesn't.</strong> The breaking point usually comes when you add your second product, your first multi-year deal structure, or your first sales rep who figures out they can offer discounts that Finance hasn't approved. By the time we deployed CPQ, the error rate on manually-built quotes was significant enough that Finance was doing line-by-line contract reviews before every signature.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>Standard quoting limitations:</strong> no bundle logic, no pricing rules, no guardrails on discounting</li>
+        <li><strong>Manual approval chains:</strong> email-based routing across Manager → VP → Finance with no tracking, no escalation, no audit trail</li>
+        <li><strong>Pricing errors:</strong> manually-built quotes contained pricing inconsistencies that required Finance review before every deal closed</li>
+        <li><strong>No commercial compliance enforcement:</strong> non-standard legal terms appearing in deals without Legal sign-off</li>
+        <li><strong>Slow quote-to-cash:</strong> days lost between quote completion and contract execution due to unautomated approval and signature workflows</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Map the quote-to-cash flow first. Design for rep adoption, not just system compliance.</h2>
+      <p>CPQ deployments fail most often for one of two reasons: the pricing model is too complex for reps to navigate, or the approval rules are so strict that reps work around them. I started the project with a design principle: <strong>CPQ should make the right quote the easy quote</strong>. If reps have to fight the system to do standard deals, adoption will be shallow and the compliance gains won't materialize.</p>
+      <p>Before touching configuration, I ran a quote-to-cash mapping session with Sales, Finance, and Legal. The goal was to surface every pricing scenario, every exception case, and every approval trigger that existed in the current process — captured in writing, with business owners, before a single CPQ rule was built. This mapping session took two weeks and surfaced 30+ scenarios that would have become CPQ incidents if discovered post-launch.</p>
+      <p>For the Advanced Approvals design, I worked backward from the question: <strong>what does Finance actually need to approve, vs. what can be auto-approved by rule?</strong> The answer was that ~60% of deals could be approved automatically if pricing guardrails were enforced at the quote level. Advanced Approvals would only trigger on genuine exceptions — making the human approval step faster and more meaningful.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">Product catalog, pricing rules, approval matrix, e-signature, and rep enablement — in sequence.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Product catalog — Clean data model for a multi-product org</div>
+            <div class="step-desc">Built the CPQ product catalog from scratch: products, price books, and product options organized into bundles by product line. Enforced naming conventions and SKU structure in coordination with Product and Finance so the catalog remained maintainable after go-live. Migrated historical product data from Salesforce standard objects.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Pricing rules — Guardrails at the quote level</div>
+            <div class="step-desc">Configured CPQ pricing rules to enforce discount floors and ceilings by product line and deal size. Bundle discounting logic for multi-product deals. Multi-year deal proration calculated automatically. Price schedule exceptions (ELAs, ramp deals, pilot pricing) built as configurable product options rather than manual overrides — keeping the quote structured while allowing legitimate flexibility.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Advanced Approvals — Automated routing with full audit trail</div>
+            <div class="step-desc">Built a 4-tier approval matrix: deals within standard pricing parameters auto-approve. Discounts above threshold route to Manager. Discounts above a second threshold or non-standard commercial terms route to VP Sales + Finance. Legal terms exceptions route to Legal. All approvals tracked in Salesforce with timestamps, approver identity, and the specific exception that triggered review.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">DocuSign integration — Quote to contract in one motion</div>
+            <div class="step-desc">Integrated DocuSign via the native Salesforce + DocuSign connector. Approved quotes generate contract documents automatically from pre-approved templates. Signature routing configured by deal type. Contract status tracked back to Salesforce Opportunity in real time — Finance and RevOps never had to chase for "did this close?"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Rep enablement — Guided quoting and self-service training</div>
+            <div class="step-desc">Built a CPQ quick-reference guide covering the 10 most common quoting scenarios. Ran 4 live training sessions with the global sales org (split by region and time zone). Created a CPQ "cheat sheet" that lived as a Salesforce utility bar component — accessible inside the quoting flow without leaving the screen.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 32px;">
+        <strong>Advanced Approvals only works if the approval matrix is designed by Finance, not for Finance.</strong> The most common CPQ failure mode is an approval structure so detailed that approvers treat it as noise and approve everything reflexively. I worked with VP Sales and the CFO to define the specific scenarios that genuinely required human judgment — and automated everything else.
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">Multi-day approval chains replaced by same-day. Quote errors eliminated. The entire global sales org on a single, governed quoting process.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">Days → Hours</span>
+          <div class="result-label">Approval cycle time</div>
+          <div class="result-desc">Email-chain approvals that previously took 2–3 business days were replaced by automated routing with same-day turnaround for standard exceptions.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Zero</span>
+          <div class="result-label">Pricing errors post-launch</div>
+          <div class="result-desc">CPQ pricing rules eliminated the manual calculation errors that had been requiring Finance review of every quote. Post-launch: zero pricing discrepancies reported in the first 6 months.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">100%</span>
+          <div class="result-label">Global sales org adoption</div>
+          <div class="result-desc">All quotes globally generated in CPQ within 8 weeks of launch. No parallel process — standard quoting fully deprecated.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Full audit trail</span>
+          <div class="result-label">Commercial compliance</div>
+          <div class="result-desc">Every discount exception, non-standard term, and approval decision logged in Salesforce — giving Finance and Legal visibility they'd never had into the commercial process.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What I'd tell anyone about to start a CPQ deployment.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">🗺️</span>
+          <span><strong>Map every pricing scenario before touching configuration.</strong> CPQ implementations that skip the discovery phase always discover edge cases post-launch — in production, with live deals. Two weeks of structured discovery with Sales, Finance, and Legal is the highest-leverage investment in the project.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🎯</span>
+          <span><strong>Design for the rep, not the administrator.</strong> The goal of CPQ is rep adoption, not configuration elegance. If building a quote takes more steps than before, reps will find workarounds. Every UX decision in the quoting flow should be evaluated against: "would a rep in a rush still do this correctly?"</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">⚖️</span>
+          <span><strong>Approval matrices should be designed to auto-approve, not to route everything.</strong> An approval step that triggers on 80% of deals isn't compliance — it's noise. Work with Finance to define the specific thresholds where human judgment genuinely adds value, then automate everything below that line.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📚</span>
+          <span><strong>Enablement is a systems deliverable, not an afterthought.</strong> CPQ complexity gets absorbed into tribal knowledge without good documentation. The quick-reference guide and in-app cheat sheet reduced support requests by more than anything else in the first 90 days post-launch.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Deploying Salesforce CPQ?</h2>
+    <p>I've designed and deployed CPQ for complex, multi-product orgs — from catalog architecture through Advanced Approvals to rep enablement. Let's talk about your quoting challenges.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="gtm-org-build.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">Building a GTM Systems Org</span>
+      </a>
+      <a href="gtm-analytics.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">GTM Analytics & KPI Framework</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshanlalsf@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

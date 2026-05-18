@@ -42,9 +42,10 @@
     <div class="cs-tags">
       <span class="tag">n8n</span>
       <span class="tag">Claude AI</span>
+      <span class="tag">Clay</span>
       <span class="tag">Salesforce</span>
-      <span class="tag">Outreach</span>
-      <span class="tag">Zapier</span>
+      <span class="tag">Gong Engage</span>
+      <span class="tag">Demandbase</span>
       <span class="tag">Agentic</span>
     </div>
     <div class="cs-stats">
@@ -70,7 +71,7 @@
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Problem</p>
       <h2 class="cs-section-title">GTM teams are doing knowledge work that machines should be doing. The research, the routing decisions, the CRM updates — it's all automatable.</h2>
-      <p>Look at how a typical SDR or AE spends their first hour on a new prospect: they open LinkedIn, read the company website, check for recent news, search Salesforce for existing activity, look up the contact in ZoomInfo, write a personalized note in Outreach, and then manually update six CRM fields. <strong>That's 20–30 minutes of work before a single value-creating interaction happens.</strong></p>
+      <p>Look at how a typical SDR or AE spends their first hour on a new prospect: they open LinkedIn, read the company website, check for recent news, search Salesforce for existing activity, look up the contact in a data provider, write a personalized note in Gong Engage, and then manually update six CRM fields. <strong>That's 20–30 minutes of work before a single value-creating interaction happens.</strong></p>
       <p>Multiply that by 30–50 new accounts per week per rep, and you're looking at entire workdays consumed by research that follows near-identical patterns every time. It's rule-based enough to automate but complex enough — synthesizing multiple data sources into a coherent assessment — that simple Zapier workflows can't handle it.</p>
 
       <div class="callout">
@@ -109,7 +110,7 @@
           <div class="step-num">02</div>
           <div class="step-content">
             <div class="step-title">Research Agent — Multi-source data gathering</div>
-            <div class="step-desc">n8n pulls in parallel: company website content (via Jina.ai reader API), recent news (via News API), LinkedIn company page summary, ZoomInfo firmographics, existing Salesforce activity history, and job posting data (growth signal). All context assembled into a single prompt payload.</div>
+            <div class="step-desc">n8n pulls in parallel: company website content (via web content scraping), recent news (via News API), LinkedIn company page summary, Clay for firmographic and demographic enrichment, ZoomInfo firmographics, existing Salesforce activity history, job posting data (growth signal), product usage signals (in-app behavior and engagement data), and web traffic and intent data via Demandbase. All context assembled into a single prompt payload.</div>
           </div>
         </div>
         <div class="step">
@@ -130,7 +131,7 @@
           <div class="step-num">05</div>
           <div class="step-content">
             <div class="step-title">Sequence Decision — Enroll or escalate</div>
-            <div class="step-desc">Score ≥ 4: auto-enroll in appropriate Outreach sequence based on persona/segment. Score 2–3: send Slack notification to rep with full context for human decision. Score ≤ 1: tag account as low-priority, skip sequencing, log for quarterly review.</div>
+            <div class="step-desc">Score ≥ 4: auto-enroll in appropriate Gong Engage sequence based on persona/segment. Score 2–3: send Slack notification to rep with full context for human decision. Score ≤ 1: tag account as low-priority, skip sequencing, log for quarterly review.</div>
           </div>
         </div>
       </div>
@@ -158,7 +159,7 @@
         <div class="result-card">
           <span class="result-num">&lt;5 min</span>
           <div class="result-label">Trigger to sequence enrollment</div>
-          <div class="result-desc">High-scoring accounts enter Outreach sequences within minutes of the trigger — vs. hours or days with manual processes.</div>
+          <div class="result-desc">High-scoring accounts enter Gong Engage sequences within minutes of the trigger — vs. hours or days with manual processes.</div>
         </div>
         <div class="result-card">
           <span class="result-num">Redirected</span>

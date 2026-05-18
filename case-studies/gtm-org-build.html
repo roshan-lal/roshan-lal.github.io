@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case Study: Building a GTM Systems Org — How Roshan Lal built and scaled a 10-person GTM Systems organization governing a $4M+ annual tool stack across Sales, Marketing, and CS." />
+  <meta property="og:title" content="Building a GTM Systems Org — Roshan Lal" />
+  <meta property="og:description" content="Built and scaled a 10-person GTM Systems org — Salesforce Admins, Developers, and BSMs — governing 20+ tools and $4M+ in annual SaaS spend." />
+  <title>Building a GTM Systems Org — Roshan Lal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>roshan lal</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#stack">Stack</a></li>
+      <li class="nav-cta"><a href="../index.html#contact">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="container cs-hero-inner">
+    <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
+    <div class="cs-meta">
+      <span class="badge badge-green">Live</span>
+      <span class="cs-company">Developer Tools · Series D</span>
+    </div>
+    <h1 class="cs-title">Building a GTM Systems Org</h1>
+    <p class="cs-tagline">Hired and scaled a 10-person GTM Systems organization — Salesforce Admins, Developers, and Business Systems Managers — governing a $4M+ annual SaaS stack and establishing the delivery standards, change management, and operational SLAs that kept a hypergrowth GTM motion running.</p>
+    <div class="cs-tags">
+      <span class="tag">Org Design</span>
+      <span class="tag">Team Building</span>
+      <span class="tag">Salesforce</span>
+      <span class="tag">Change Management</span>
+      <span class="tag">SaaS Governance</span>
+      <span class="tag">RevOps Leadership</span>
+    </div>
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <span class="cs-stat-num">10</span>
+        <span class="cs-stat-lbl">Person GTM Systems org built</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">$4M+</span>
+        <span class="cs-stat-lbl">Annual SaaS stack governed</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">20+</span>
+        <span class="cs-stat-lbl">Tools across Sales, Marketing & CS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-body">
+  <div class="container">
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Problem</p>
+      <h2 class="cs-section-title">Rapid growth had outpaced the systems function. A single-admin Salesforce environment was running a 400-person GTM motion.</h2>
+      <p>At a high-growth developer tools company scaling from Series C through Series D, the GTM Systems function had never kept pace with headcount. The company had grown from 50 to 400+ in three years — but the systems team supporting the revenue motion was still effectively a single Salesforce admin and a few part-time contributors from IT.</p>
+      <p>The symptoms of under-investment were everywhere. Sales reps waited weeks for basic CRM changes. Marketing couldn't get data models updated without a backlog of competing requests. CS had built their own workarounds in Zendesk because getting Salesforce changes was too slow. And with a $4M+ annual SaaS stack spread across 20+ tools, there was no centralized function accountable for how that spend was managed or evaluated.</p>
+
+      <div class="callout callout-amber">
+        <strong>Under-investing in GTM Systems at scale is a tax on the entire revenue org.</strong> Every hour a rep spends working around CRM issues, every week a campaign is delayed by a data model gap, every deal that slips because CPQ couldn't handle the pricing structure — these costs are invisible on a systems team headcount plan but very visible in the revenue numbers.
+      </div>
+
+      <ul class="cs-list">
+        <li><strong>Single point of failure:</strong> one Salesforce admin supporting a 400-person GTM org, with no backups or specialization</li>
+        <li><strong>No delivery framework:</strong> all requests worked informally — no intake, no prioritization, no SLAs</li>
+        <li><strong>Change management gaps:</strong> production configuration changes were made ad hoc with no testing environments or release processes</li>
+        <li><strong>Stack without governance:</strong> 20+ tools with no centralized ownership, duplicate capabilities, and auto-renewing contracts nobody was reviewing</li>
+        <li><strong>No strategic alignment:</strong> systems work was reactive to individual requests rather than mapped to GTM priorities</li>
+      </ul>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Approach</p>
+      <h2 class="cs-section-title">Hire for function, not headcount. Build the operating model before scaling the team.</h2>
+      <p>The temptation when inheriting an understaffed systems function is to hire fast and figure it out later. I did the opposite: <strong>before making a single hire, I defined the operating model</strong> — what the org would own, how work would flow in, how delivery would be measured, and what the escalation paths looked like. Hiring into a defined structure produces very different results than hiring into a vacuum.</p>
+      <p>I mapped the team to three functional layers: <strong>Administrators</strong> (day-to-day CRM configuration, user management, basic automations), <strong>Developers</strong> (complex customizations, integrations, data pipelines), and <strong>Business Systems Managers</strong> (stakeholder-facing, project management, requirements gathering). Each layer had defined scope, clear career paths, and distinct hiring profiles.</p>
+      <p>The operating model came first: intake process, SLA tiers, change management workflow, and a quarterly planning cadence tied to GTM leadership priorities. Only then did we scale headcount — so each hire had a clear role to step into rather than a blank-slate "figure out what's needed" onboarding experience.</p>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Build</p>
+      <h2 class="cs-section-title">Five pillars: org structure, intake, change management, SLAs, and stack governance.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title">Org structure — Three-tier model with clear scope</div>
+            <div class="step-desc">Defined three functional layers: Salesforce Admins (configuration, users, automations), Salesforce Developers (Apex, integrations, data engineering), and Business Systems Managers (stakeholder management, project delivery, requirements). Each with hiring rubrics, onboarding paths, and defined scope. Grew from 1 to 10 over 18 months, filling critical capability gaps in sequence.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title">Intake and prioritization — Jira-based request management</div>
+            <div class="step-desc">Replaced informal Slack/email requests with a structured Jira intake process. Every request captured with business impact, requesting team, and urgency. Weekly triage session with GTM leadership to set priorities. Eliminated the "whoever shouts loudest gets served first" dynamic that had dominated before.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title">Change management — Dev → Staging → Production release process</div>
+            <div class="step-desc">Built a three-environment Salesforce setup with formal change control: all development in sandbox, QA in full sandbox with real data shapes, production deployments on a biweekly release schedule with rollback documentation. Eliminated the ad hoc production changes that had caused several major incidents before the framework existed.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title">SLA tiers — P1/P2/P3 with defined response windows</div>
+            <div class="step-desc">Three-tier SLA framework: P1 (revenue-blocking issue — 4-hour response, same-day resolution), P2 (business-impacting but not revenue-blocking — 24-hour response, 3-day resolution), P3 (enhancement or non-urgent request — triaged in weekly session). Published to all GTM leadership. Response rate to SLA: &gt;95% within 6 months.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title">Stack governance — Quarterly reviews and intake controls</div>
+            <div class="step-desc">Established GTM Systems as the approval gate for all new SaaS tool purchases: business case required, overlap assessment required, budget owner sign-off required. Quarterly stack reviews covering utilization, contract renewals, and tool performance. This governance framework directly fed the $300K+ consolidation project that followed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">The Results</p>
+      <h2 class="cs-section-title">A fully-staffed, process-driven systems function that could actually keep pace with a hypergrowth GTM org.</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-num">10</span>
+          <div class="result-label">Person org built</div>
+          <div class="result-desc">Grew from 1 effective Salesforce admin to a 10-person team with Admins, Developers, and BSMs — over 18 months, in a defined structure with minimal attrition.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">&gt;95%</span>
+          <div class="result-label">SLA compliance rate</div>
+          <div class="result-desc">Within 6 months of launching the SLA framework, the team was responding within SLA windows on over 95% of inbound requests — tracked in Jira.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">Zero</span>
+          <div class="result-label">Unplanned prod incidents (post-framework)</div>
+          <div class="result-desc">After the change management framework was in place, production incidents caused by uncontrolled configuration changes dropped to zero in the following year.</div>
+        </div>
+        <div class="result-card">
+          <span class="result-num">$4M+</span>
+          <div class="result-label">Stack under governance</div>
+          <div class="result-desc">20+ tools across Sales, Marketing, and CS brought under centralized ownership — creating the visibility that enabled a subsequent $300K+ consolidation project.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section reveal">
+      <p class="cs-eyebrow">Key Takeaways</p>
+      <h2 class="cs-section-title">What I learned building a GTM Systems function from the ground up.</h2>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="takeaway-icon">🏗️</span>
+          <span><strong>Build the operating model before scaling the team.</strong> Hiring fast into an undefined function creates chaos at scale. Define what the org owns, how work flows in, and how delivery is measured before you write a single job description. Hiring into structure produces dramatically better outcomes than hiring into ambiguity.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">📋</span>
+          <span><strong>SLAs aren't bureaucracy — they're trust infrastructure.</strong> GTM teams lose faith in a systems function when they don't know when their requests will be addressed. Publishing SLA tiers and then hitting them consistently is the fastest way to rebuild credibility with Sales and Marketing leadership.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🔐</span>
+          <span><strong>Change management is the unglamorous unlock.</strong> Most Salesforce environments at high-growth companies are fragile because configuration changes go straight to production. A sandbox-first release process feels slow at first but eliminates an entire category of incidents that erode stakeholder trust.</span>
+        </div>
+        <div class="takeaway">
+          <span class="takeaway-icon">🔭</span>
+          <span><strong>Governance creates optionality.</strong> When GTM Systems owns the intake process for new tools, you build an inventory of the full stack. That inventory is what enabled the $300K+ consolidation — you can't audit what you don't know you own. Governance isn't just about control; it's about visibility.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cs-cta">
+  <div class="container">
+    <h2>Building a GTM Systems function?</h2>
+    <p>Whether you're hiring your first systems person or scaling an existing team, I can help design the org structure, operating model, and governance framework that actually works at your stage.</p>
+    <div class="cs-cta-btns">
+      <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
+      <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>
+    </div>
+  </div>
+</div>
+
+<div class="cs-nav">
+  <div class="container-wide">
+    <div class="cs-nav-inner">
+      <a href="stack-consolidation.html" class="cs-nav-link">
+        <span class="cs-nav-dir">← Previous</span>
+        <span class="cs-nav-title">GTM Stack Consolidation</span>
+      </a>
+      <a href="salesforce-cpq.html" class="cs-nav-link next">
+        <span class="cs-nav-dir">Next Project →</span>
+        <span class="cs-nav-title">Salesforce CPQ Deployment</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left"><span class="footer-dot"></span>Roshan Lal — GTM Systems & AI Automation</div>
+    <nav class="footer-links">
+      <a href="mailto:roshanlalsf@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/roshannlal" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('shrunk', window.scrollY > 40), { passive: true });
+  const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => { const o = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }));
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
