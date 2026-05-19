@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Case Study: Lead Routing Re-Architecture — How Roshan Lal rebuilt a routing model from scratch at a high-growth SaaS company, achieving a 90% improvement in speed-to-lead." />
+  <meta name="description" content="Case Study: Lead Routing Re-Architecture — How Roshan Lal rebuilt a routing model from scratch at a high-growth SaaS company, cutting speed-to-lead from 1+ hour to under 3 minutes." />
   <meta property="og:title" content="Lead Routing Re-Architecture — Roshan Lal" />
-  <meta property="og:description" content="Rebuilt an FY25 routing model on ZoomInfo + RingLead — cutting speed-to-lead from 4+ hours to under 25 minutes." />
+  <meta property="og:description" content="Rebuilt an FY25 routing model on ZoomInfo + RingLead — cutting speed-to-lead from 1+ hour to under 3 minutes." />
   <title>Lead Routing Re-Architecture — Roshan Lal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
       <span class="cs-company">Developer Tools</span>
     </div>
     <h1 class="cs-title">Lead Routing Re-Architecture</h1>
-    <p class="cs-tagline">Rebuilt a 4-year-old routing model from scratch — replacing 200+ brittle rules with a clean, data-driven design that cut speed-to-lead from 4+ hours to under 25 minutes.</p>
+    <p class="cs-tagline">Rebuilt a legacy routing model written in complex Apex — replacing strict email domain-to-website matching that broke on multi-domain companies and parent-child account structures. Added enrichment directly into the routing workflow and cut speed-to-lead from 1+ hour to under 3 minutes.</p>
     <div class="cs-tags">
       <span class="tag">RingLead</span>
       <span class="tag">ZoomInfo</span>
@@ -47,16 +47,16 @@
     </div>
     <div class="cs-stats">
       <div class="cs-stat">
-        <span class="cs-stat-num">90%</span>
-        <span class="cs-stat-lbl">Improvement in speed-to-lead</span>
+        <span class="cs-stat-num">1 hr → &lt;3 min</span>
+        <span class="cs-stat-lbl">Speed-to-lead improvement</span>
       </div>
       <div class="cs-stat">
-        <span class="cs-stat-num">&lt;2%</span>
-        <span class="cs-stat-lbl">Misroute rate (down from 30%+)</span>
+        <span class="cs-stat-num">Zero</span>
+        <span class="cs-stat-lbl">Misroutes post-launch</span>
       </div>
       <div class="cs-stat">
-        <span class="cs-stat-num">200→40</span>
-        <span class="cs-stat-lbl">Routing rules (80% simplification)</span>
+        <span class="cs-stat-num">Enrichment</span>
+        <span class="cs-stat-lbl">Baked directly into routing workflow</span>
       </div>
     </div>
   </div>
@@ -67,20 +67,20 @@
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Problem</p>
-      <h2 class="cs-section-title">A routing model built for the company 4 years ago — running a company 10x that size today.</h2>
-      <p>At a leading API developer platform, lead routing had accumulated four years of band-aids. Every new territory, new product line, and new market segment added rules on top of existing rules — until the model had over 200 active routing rules that almost nobody fully understood.</p>
-      <p>The consequences were significant. <strong>Speed-to-lead averaged over 4 hours</strong> on inbound leads. Competitors known for aggressive outbound were reaching prospects before the company's own reps did. And with a <strong>30%+ misroute rate</strong>, reps were constantly flagging leads they shouldn't own — burning goodwill and eating ops bandwidth.</p>
+      <h2 class="cs-section-title">A legacy routing model written in complex Apex — with matching logic so brittle that a single mismatched domain sent a lead to the wrong rep.</h2>
+      <p>At a leading API developer platform, lead routing was built on strict email domain-to-website matching logic written in Apex. The rule was simple in theory: match the prospect's email domain to the account website URL. In practice, it failed constantly — companies with multiple domains, subsidiaries, or parent-child account structures would mismatch silently, routing leads to the wrong owner with no indication anything had gone wrong.</p>
+      <p>Compounding the problem: <strong>there was no enrichment before routing</strong>. Leads arrived with only the data the prospect had filled in on the form — often just name, email, and company name. Without any enrichment step to normalize firmographics or identify the right account match, the routing logic was making decisions on incomplete data. The result was a <strong>speed-to-lead over 1 hour</strong> on average, with misroutes requiring manual triage by RevOps to fix.</p>
 
       <div class="callout callout-amber">
-        <strong>The speed-to-lead problem was costing pipeline, not just annoying reps.</strong> Industry data consistently shows that responding within 5 minutes vs. 30 minutes improves qualification rates by 21x. We were averaging 4+ hours. Every hour of delay was measurable revenue risk.
+        <strong>The speed-to-lead problem was costing pipeline, not just annoying reps.</strong> Industry data consistently shows that responding within 5 minutes vs. 30 minutes improves qualification rates by 21x. Every hour of routing delay — and every misroute requiring manual correction — was measurable revenue risk.
       </div>
 
       <ul class="cs-list">
-        <li><strong>200+ routing rules</strong> with no clear ownership — nobody could trace why a lead went where it did</li>
-        <li><strong>Data quality at the root:</strong> bad company matching meant routing decisions were made on wrong firmographics</li>
-        <li><strong>No SLA enforcement</strong> — leads could sit uncontacted for days with no alert or escalation</li>
-        <li><strong>Brittle to change:</strong> any GTM motion update required 2-week routing change requests through IT</li>
-        <li><strong>Rep conflicts:</strong> overlapping territory logic created constant "who owns this?" disputes</li>
+        <li><strong>Strict domain matching:</strong> prospect's email domain had to exactly match the account website — no support for companies with multiple domains</li>
+        <li><strong>No parent-child account handling:</strong> subsidiaries and regional entities weren't linked, so leads from child companies routinely misrouted</li>
+        <li><strong>No enrichment before routing:</strong> leads arrived with raw form data only — no normalization, no firmographic lookup, no company matching</li>
+        <li><strong>Brittle to change:</strong> routing logic was in Apex, so any GTM motion update required going to a Salesforce developer — creating weeks-long backlogs for changes that should have taken hours</li>
+        <li><strong>Rep conflicts:</strong> misroutes created constant "who owns this?" disputes, burning goodwill and eating RevOps bandwidth</li>
       </ul>
     </div>
 
@@ -92,12 +92,12 @@
 
       <p>Three root causes emerged:</p>
       <ul class="cs-list">
-        <li><strong>Data quality:</strong> ZoomInfo company matching was failing on ~25% of records — leads being routed on wrong company size or segment</li>
-        <li><strong>Logic complexity:</strong> 200 rules had so many exceptions and overrides that edge cases broke silently</li>
-        <li><strong>No governance:</strong> rules were added but never removed — the model only grew, never shrank</li>
+        <li><strong>Matching logic too strict:</strong> exact email domain-to-website matching with no fallbacks meant any domain variation caused a misroute</li>
+        <li><strong>No enrichment upstream:</strong> routing decisions were made on raw form data — without firmographic enrichment, account matching was guesswork</li>
+        <li><strong>No governance:</strong> Apex-based logic meant only a developer could make changes, creating a bottleneck that left broken rules in place for months</li>
       </ul>
 
-      <p>The new design was built around five clean routing principles: <strong>named account ownership first → ICP tier → geo territory → segment → overflow pool</strong>. Any lead could be traced to one of five decisions. No exceptions without explicit sign-off.</p>
+      <p>The new design moved enrichment to step zero — normalize and match the account before any routing decision is made. Routing logic itself was rebuilt in a no-code routing tool so GTM changes could be made without engineering involvement. The new model followed five clean routing principles: <strong>named account ownership first → ICP tier → geo territory → segment → overflow pool</strong>. Any lead could be traced to one of five decisions.</p>
     </div>
 
     <div class="cs-section reveal">
@@ -145,13 +145,13 @@
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Results</p>
-      <h2 class="cs-section-title">From a 4-hour average to under 25 minutes. From constant rep conflicts to near-zero misroutes.</h2>
+      <h2 class="cs-section-title">From 1+ hour to under 3 minutes. From constant misroutes to zero post-launch.</h2>
 
       <div class="compare">
         <div class="compare-box">
           <div class="compare-label before">Before</div>
           <div class="compare-items">
-            <div class="compare-item">⏱ Speed-to-lead: 4+ hours average</div>
+            <div class="compare-item">⏱ Speed-to-lead: 1+ hour average</div>
             <div class="compare-item">❌ Misroute rate: 30%+</div>
             <div class="compare-item">📋 200+ routing rules, no clear owners</div>
             <div class="compare-item">🔧 2-week change request cycle</div>
@@ -161,7 +161,7 @@
         <div class="compare-box">
           <div class="compare-label after">After</div>
           <div class="compare-items">
-            <div class="compare-item">⚡ Speed-to-lead: under 25 minutes</div>
+            <div class="compare-item">⚡ Speed-to-lead: under 3 minutes</div>
             <div class="compare-item">✅ Misroute rate: under 2%</div>
             <div class="compare-item">📋 40 clean rules with documented owners</div>
             <div class="compare-item">🔧 2-day change turnaround</div>
@@ -174,7 +174,7 @@
         <div class="result-card">
           <span class="result-num">90%</span>
           <div class="result-label">Speed-to-lead improvement</div>
-          <div class="result-desc">From a 4+ hour average to under 25 minutes, measured across all inbound lead sources.</div>
+          <div class="result-desc">From a 1+ hour average to under 3 minutes — driven by moving enrichment upstream before any routing decision.</div>
         </div>
         <div class="result-card">
           <span class="result-num">~0</span>
