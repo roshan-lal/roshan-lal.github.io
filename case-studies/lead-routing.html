@@ -108,8 +108,8 @@
         <div class="step">
           <div class="step-num">01</div>
           <div class="step-content">
-            <div class="step-title">Data normalization layer — ZoomInfo Match & Dedupe</div>
-            <div class="step-desc">Before any routing decision, every incoming lead runs through ZoomInfo to normalize company name, firmographic data, and employee count. This single step fixed ~80% of the misroute problem at the root.</div>
+            <div class="step-title">Enrichment & normalization — ZoomInfo + RingLead</div>
+            <div class="step-desc">Before any routing decision, every incoming lead is enriched via ZoomInfo to normalize company name, firmographic data, and employee count. RingLead then handles deduplication and account matching — identifying the correct parent account, resolving subsidiary relationships, and supporting multi-domain company structures that the old Apex logic had failed on entirely. Moving these steps upstream, before any routing decision is made, was the single biggest fix.</div>
           </div>
         </div>
         <div class="step">
