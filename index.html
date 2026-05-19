@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ── SEO ── -->
-  <meta name="description" content="Roshan Lal — GTM Systems Leader & AI Workflow Architect. 11+ years building revenue infrastructure at Postman, HashiCorp, and Sumo Logic. Open to roles and consulting." />
+  <meta name="description" content="Roshan Lal — GTM Systems Leader & AI Workflow Architect. 11+ years building revenue infrastructure at Postman, HashiCorp, Sumo Logic, and Apttus. Open to roles and consulting." />
   <meta name="keywords" content="GTM Systems, RevOps, Salesforce, AI Automation, Revenue Operations, Roshan Lal, Clay, n8n, CPQ" />
   <link rel="canonical" href="https://roshan-lal.github.io/" />
 
@@ -13,7 +13,7 @@
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://roshan-lal.github.io/" />
   <meta property="og:title"       content="Roshan Lal — GTM Systems Leader & AI Workflow Architect" />
-  <meta property="og:description" content="I build the data foundations and AI-powered workflows that revenue teams run on. 11+ years at Postman, HashiCorp, Sumo Logic." />
+  <meta property="og:description" content="I build the data foundations and AI-powered workflows that revenue teams run on. 11+ years at Postman, HashiCorp, Sumo Logic, and Apttus." />
   <meta property="og:image"       content="https://roshan-lal.github.io/og-image.png" />
 
   <!-- ── Twitter Card ── -->
@@ -507,8 +507,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
-    .project-card.featured { grid-column: 1 / -1; }
-    .project-card:not(.featured):last-child { grid-column: 1 / -1; }
 
     /* ── Project card ── */
     .project-card {
@@ -1034,7 +1032,7 @@
           <img src="assets/profile.jpg" alt="Roshan Lal" />
         </div>
         <p>
-          I'm a GTM Systems leader with <strong>11+ years</strong> building and scaling revenue infrastructure at high-growth B2B SaaS companies. I've owned the full stack — CRM architecture, data enrichment, lead routing, CPQ, sales engagement, GTM analytics, and agentic AI workflows — at <strong>Postman, HashiCorp, and Sumo Logic</strong>.
+          I'm a GTM Systems leader with <strong>11+ years</strong> building and scaling revenue infrastructure at high-growth B2B SaaS companies. I've owned the full stack — CRM architecture, data enrichment, lead routing, CPQ, sales engagement, GTM analytics, and agentic AI workflows — at <strong>Postman, HashiCorp, Sumo Logic, and Apttus</strong>.
         </p>
         <p>
           My work sits at the intersection of systems thinking and hands-on execution. I've built 10-person GTM Systems orgs, driven $5M+ ARR launches, eliminated $300K in annual SaaS spend, and recently layered AI and agentic workflows on top of the traditional RevOps stack.
@@ -1062,7 +1060,7 @@
           <div class="info-icon"><i data-lucide="building-2" width="17" height="17"></i></div>
           <div>
             <div class="info-label">Companies</div>
-            <div class="info-value">Postman · HashiCorp · Sumo Logic</div>
+            <div class="info-value">Postman · HashiCorp · Sumo Logic · Apttus</div>
           </div>
         </div>
 
@@ -1132,10 +1130,9 @@
           <span class="tag">Salesforce</span>
           <span class="tag">ZoomInfo</span>
           <span class="tag">AI Signals</span>
-          <span class="tag">Outreach</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Developer Tools · Series D</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/ai-enrichment-engine.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1152,21 +1149,20 @@
         </div>
         <h3 class="proj-title">Lead Routing Re-Architecture</h3>
         <div class="proj-impact">
-          <span class="impact-chip">↑ 90% speed-to-lead</span>
-          <span class="impact-chip">Routing errors → 0</span>
+          <span class="impact-chip">1+ hr → &lt;3 min speed-to-lead</span>
+          <span class="impact-chip">Enrichment baked into routing</span>
         </div>
         <p class="proj-desc">
-          Redesigned the FY25 routing model on ZoomInfo + RingLead, replacing brittle legacy logic with a scalable, data-driven design. Defined territory rules, SLA enforcement, and ownership hierarchies — eliminating manual triage and cutting routing errors to near zero.
+          Rebuilt a legacy routing model written in complex Apex — replacing strict email domain-to-website matching that broke on multi-domain companies and parent-child account structures. Added enrichment directly into the routing workflow, cutting speed-to-lead from 1+ hour to under 3 minutes.
         </p>
         <div class="proj-tags">
           <span class="tag">RingLead</span>
           <span class="tag">ZoomInfo</span>
           <span class="tag">Salesforce</span>
-          <span class="tag">LeanData</span>
           <span class="tag">Routing Logic</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Developer Tools · Series D</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/lead-routing.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1193,11 +1189,10 @@
           <span class="tag">Salesforce CPQ</span>
           <span class="tag">Billing Systems</span>
           <span class="tag">RevOps</span>
-          <span class="tag">UBB</span>
           <span class="tag">Rev Rec</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Cloud Infrastructure · IPO</span>
+          <span class="proj-company">Cloud Infrastructure</span>
           <a href="case-studies/flexible-consumption.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1213,81 +1208,57 @@
             <span class="badge badge-accent">Agentic</span>
           </div>
         </div>
-        <h3 class="proj-title">Agentic GTM Workflow</h3>
+        <h3 class="proj-title">Agentic Deal Signal Monitor</h3>
         <div class="proj-impact">
-          <span class="impact-chip">Autonomous prospecting</span>
-          <span class="impact-chip">Auto CRM updates</span>
+          <span class="impact-chip">100% pipeline monitored</span>
+          <span class="impact-chip">75%+ alert-to-action rate</span>
         </div>
         <p class="proj-desc">
-          Designed and deployed n8n-based agentic workflows that automate prospect research, CRM field updates, and outreach sequencing — orchestrated with Claude AI for dynamic reasoning and branching logic at each step of the GTM workflow.
+          Built an n8n + Claude workflow that watches Salesforce and Gong for deal risk signals — stagnation, champion changes, missed next steps, competitor mentions — and delivers context-rich Slack alerts to the right rep or manager before deals go cold.
         </p>
         <div class="proj-tags">
           <span class="tag">n8n</span>
           <span class="tag">Claude AI</span>
-          <span class="tag">Zapier</span>
           <span class="tag">Salesforce</span>
-          <span class="tag">Agentic</span>
+          <span class="tag">Gong</span>
+          <span class="tag">Slack</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Independent</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/agentic-gtm-workflow.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
         </div>
       </div>
 
-      <!-- ── 5. Stack Consolidation (featured — full width) ── -->
-      <div class="project-card featured reveal">
-        <div class="proj-body">
-          <div class="proj-top" style="margin-bottom:14px;">
-            <div class="proj-icon" aria-hidden="true">🔬</div>
-            <div class="badges">
-              <span class="badge badge-green">Live</span>
-            </div>
-          </div>
-          <h3 class="proj-title">GTM Stack Consolidation — $300K+ Saved</h3>
-          <div class="proj-impact" style="margin:12px 0;">
-            <span class="impact-chip">$300K+ annual savings</span>
-            <span class="impact-chip">20+ tools audited</span>
-            <span class="impact-chip">Zero capability loss</span>
-          </div>
-          <p class="proj-desc">
-            Led a comprehensive audit of 20+ GTM tools — identifying shelfware, renegotiating vendor contracts, and consolidating overlapping tooling across Sales, Marketing, and CS. Delivered $300K+ in annual SaaS savings without sacrificing a single critical capability. Established ongoing governance to prevent future stack sprawl.
-          </p>
-          <div class="proj-tags" style="margin-top:14px;">
-            <span class="tag">Stack Audit</span>
-            <span class="tag">Vendor Negotiation</span>
-            <span class="tag">SaaS Governance</span>
-            <span class="tag">Cost Optimization</span>
-          </div>
-          <div class="proj-footer" style="margin-top:20px;">
-            <span class="proj-company">Developer Tools · Series D</span>
-            <a href="case-studies/stack-consolidation.html" class="link-arrow">
-              View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
-            </a>
+      <!-- ── 5. Stack Consolidation ── -->
+      <div class="project-card reveal">
+        <div class="proj-top">
+          <div class="proj-icon" aria-hidden="true">🔬</div>
+          <div class="badges">
+            <span class="badge badge-green">Live</span>
           </div>
         </div>
-
-        <!-- Stats sidebar -->
-        <div class="proj-aside">
-          <div class="proj-stats">
-            <div>
-              <div class="proj-stat-num">$300K</div>
-              <div class="proj-stat-lbl">Annual Savings</div>
-            </div>
-            <div style="height:1px;background:var(--border-mid);"></div>
-            <div>
-              <div class="proj-stat-num" style="font-size:30px;color:var(--text);">20+</div>
-              <div class="proj-stat-lbl">Tools Evaluated</div>
-            </div>
-            <div style="height:1px;background:var(--border-mid);"></div>
-            <div>
-              <div class="proj-stat-lbl" style="margin-bottom:4px;">Sector</div>
-              <div style="font-size:14px;font-weight:600;">Developer Tools</div>
-            </div>
-          </div>
+        <h3 class="proj-title">GTM Stack Consolidation — $300K+ Saved</h3>
+        <div class="proj-impact">
+          <span class="impact-chip">$300K+ annual savings</span>
+          <span class="impact-chip">20+ tools audited</span>
         </div>
-
+        <p class="proj-desc">
+          Led a comprehensive audit of 20+ GTM tools — identifying shelfware, renegotiating vendor contracts, and consolidating overlapping tooling across Sales, Marketing, and CS. Delivered $300K+ in annual SaaS savings without sacrificing a single critical capability.
+        </p>
+        <div class="proj-tags">
+          <span class="tag">Stack Audit</span>
+          <span class="tag">Vendor Negotiation</span>
+          <span class="tag">SaaS Governance</span>
+          <span class="tag">Cost Optimization</span>
+        </div>
+        <div class="proj-footer">
+          <span class="proj-company">Developer Tools</span>
+          <a href="case-studies/stack-consolidation.html" class="link-arrow">
+            View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
+          </a>
+        </div>
       </div>
 
       <!-- ── 6. GTM Org Build ── -->
@@ -1314,7 +1285,7 @@
           <span class="tag">SaaS Governance</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Developer Tools · Series D</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/gtm-org-build.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1344,7 +1315,7 @@
           <span class="tag">DocuSign</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Infrastructure Software · Pre-IPO</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/salesforce-cpq.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>
@@ -1374,7 +1345,7 @@
           <span class="tag">GTM Reporting</span>
         </div>
         <div class="proj-footer">
-          <span class="proj-company">Infrastructure Software · Pre-IPO</span>
+          <span class="proj-company">Developer Tools</span>
           <a href="case-studies/gtm-analytics.html" class="link-arrow">
             View Case Study <i data-lucide="arrow-right" width="13" height="13"></i>
           </a>

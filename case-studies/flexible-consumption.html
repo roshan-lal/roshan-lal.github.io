@@ -34,7 +34,7 @@
     <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
     <div class="cs-meta">
       <span class="badge badge-green">Shipped</span>
-      <span class="cs-company">Cloud Infrastructure · IPO</span>
+      <span class="cs-company">Cloud Infrastructure</span>
     </div>
     <h1 class="cs-title">Flexible Consumption GTM Launch</h1>
     <p class="cs-tagline">Business Systems lead for a cloud platform product's shift to usage-based billing — wiring the full order-to-revenue flow for a new monetization model that generated $5M+ ARR in its first year.</p>
@@ -43,7 +43,7 @@
       <span class="tag">Billing Systems</span>
       <span class="tag">Usage-Based Billing</span>
       <span class="tag">Revenue Recognition</span>
-      <span class="tag">Snowflake</span>
+      <span class="tag">NetSuite</span>
       <span class="tag">RevOps</span>
     </div>
     <div class="cs-stats">
@@ -92,7 +92,7 @@
       <p>I formed a working pod with representatives from GTM, Product, Engineering, Finance, and PMM — meeting weekly with clear decision rights on each domain. Misalignment at this stage is expensive. We resolved it in rooms before it became code.</p>
 
       <div class="callout">
-        The key early decision: <strong>extend Salesforce vs. buy a purpose-built billing platform</strong>. We chose to extend Salesforce — keeping GTM's single source of truth intact and avoiding a new platform adoption cycle inside a 6-month window. The tradeoff was more complex data modeling. It was the right call.
+        The key early decision: <strong>build a billing backend vs. buy a purpose-built billing platform</strong>. Engineering built a custom billing backend that integrated directly with Salesforce — keeping GTM's single source of truth intact and avoiding a new platform adoption cycle inside a 6-month window. Salesforce then integrated with NetSuite for financial reporting and customer invoicing. The tradeoff was more complex data modeling. It was the right call.
       </div>
 
       <p>I sequenced the build around dependencies: data model first, then the metering pipeline, then CPQ quoting flows, then rev rec configuration, then rep enablement. Each layer had to be stable before the next could be built reliably.</p>
@@ -113,8 +113,8 @@
         <div class="step">
           <div class="step-num">02</div>
           <div class="step-content">
-            <div class="step-title">Metering pipeline — Engineering APIs → Snowflake → Salesforce</div>
-            <div class="step-desc">Partnered with Engineering to expose usage events via API. Built a Snowflake transformation layer to aggregate raw events into billable usage summaries. Nightly sync to Salesforce via Apex batch jobs, with real-time alerting on pipeline failures.</div>
+            <div class="step-title">Billing backend — Engineering-built system integrated with Salesforce</div>
+            <div class="step-desc">Partnered with Engineering to build a billing backend that tracked usage events, calculated consumption against committed credits, and surfaced billing summaries into Salesforce. This system became the authoritative source of usage data, feeding the Consumption Contract and Credit Balance objects in real time. Defined the data contract between Engineering and GTM systems to ensure accuracy across both.</div>
           </div>
         </div>
         <div class="step">
@@ -127,8 +127,8 @@
         <div class="step">
           <div class="step-num">04</div>
           <div class="step-content">
-            <div class="step-title">Revenue recognition — Ratable recognition over consumption periods</div>
-            <div class="step-desc">Configured rev rec rules for consumption contracts: credit packs recognized ratably over the contract term, on-demand recognized as consumed. Coordinated with Finance to validate against ASC 606 requirements before go-live.</div>
+            <div class="step-title">NetSuite integration — Salesforce to invoicing</div>
+            <div class="step-desc">Built the Salesforce → NetSuite integration to push consumption billing data downstream. At the end of each billing period, Salesforce usage summaries flowed into NetSuite to generate monthly usage invoices sent to customers. Coordinated with Finance on rev rec rules: credit packs recognized ratably over the contract term, on-demand recognized as consumed, validated against ASC 606 before go-live.</div>
           </div>
         </div>
         <div class="step">
@@ -159,7 +159,7 @@
         <div class="result-card">
           <span class="result-num">100%</span>
           <div class="result-label">Automated billing pipeline</div>
-          <div class="result-desc">Usage-to-invoice cycle fully automated — no manual calculation or intervention required for standard consumption contracts.</div>
+          <div class="result-desc">End-to-end usage-to-invoice cycle fully automated: Engineering billing backend → Salesforce → NetSuite → monthly customer invoice. No manual calculation or intervention required for standard consumption contracts.</div>
         </div>
         <div class="result-card">
           <span class="result-num">Template</span>

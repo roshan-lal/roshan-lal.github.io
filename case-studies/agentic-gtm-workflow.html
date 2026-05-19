@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Case Study: Agentic GTM Workflow — How Roshan Lal built an n8n + Claude AI workflow that autonomously handles prospect research, CRM updates, and outreach sequencing." />
-  <meta property="og:title" content="Agentic GTM Workflow — Roshan Lal" />
-  <meta property="og:description" content="n8n + Claude AI workflow that cuts prospect research from 20+ minutes to under 2 minutes per account, with autonomous CRM updates and sequence enrollment." />
-  <title>Agentic GTM Workflow — Roshan Lal</title>
+  <meta name="description" content="Case Study: Agentic Deal Signal Monitor — How Roshan Lal built an n8n + Claude workflow that watches Salesforce and Gong for deal risk signals and delivers actionable Slack alerts before deals go cold." />
+  <meta property="og:title" content="Agentic Deal Signal Monitor — Roshan Lal" />
+  <meta property="og:description" content="n8n + Claude workflow that monitors open pipeline for stagnation, champion changes, and missed next steps — delivering context-rich Slack alerts to reps and managers before deals go cold." />
+  <title>Agentic Deal Signal Monitor — Roshan Lal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -35,31 +35,30 @@
     <div class="cs-meta">
       <span class="badge badge-accent">AI</span>
       <span class="badge badge-accent">Agentic</span>
-      <span class="cs-company">Independent</span>
+      <span class="cs-company">Developer Tools</span>
     </div>
-    <h1 class="cs-title">Agentic GTM Workflow</h1>
-    <p class="cs-tagline">An n8n + Claude AI workflow that autonomously researches prospects, updates CRM fields, and enrolls high-fit accounts in sequences — cutting 20+ minutes of manual work per account to under 2.</p>
+    <h1 class="cs-title">Agentic Deal Signal Monitor</h1>
+    <p class="cs-tagline">An n8n + Claude workflow that watches Salesforce and Gong for deal risk signals — stagnation, champion changes, missed next steps, competitor mentions — and delivers context-rich Slack alerts to the right rep or manager before deals go cold.</p>
     <div class="cs-tags">
       <span class="tag">n8n</span>
       <span class="tag">Claude AI</span>
-      <span class="tag">Clay</span>
       <span class="tag">Salesforce</span>
-      <span class="tag">Gong Engage</span>
-      <span class="tag">Demandbase</span>
+      <span class="tag">Gong</span>
+      <span class="tag">Slack</span>
       <span class="tag">Agentic</span>
     </div>
     <div class="cs-stats">
       <div class="cs-stat">
-        <span class="cs-stat-num">&gt;90%</span>
-        <span class="cs-stat-lbl">Reduction in research time per account</span>
-      </div>
-      <div class="cs-stat">
-        <span class="cs-stat-num">85%+</span>
-        <span class="cs-stat-lbl">CRM field completeness (automated)</span>
+        <span class="cs-stat-num">100%</span>
+        <span class="cs-stat-lbl">Open pipeline actively monitored</span>
       </div>
       <div class="cs-stat">
         <span class="cs-stat-num">&lt;5 min</span>
-        <span class="cs-stat-lbl">Trigger to sequence enrollment</span>
+        <span class="cs-stat-lbl">Signal detected to Slack alert delivered</span>
+      </div>
+      <div class="cs-stat">
+        <span class="cs-stat-num">75%+</span>
+        <span class="cs-stat-lbl">Alerts result in logged Salesforce activity within 48h</span>
       </div>
     </div>
   </div>
@@ -70,124 +69,125 @@
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Problem</p>
-      <h2 class="cs-section-title">GTM teams are doing knowledge work that machines should be doing. The research, the routing decisions, the CRM updates — it's all automatable.</h2>
-      <p>Look at how a typical SDR or AE spends their first hour on a new prospect: they open LinkedIn, read the company website, check for recent news, search Salesforce for existing activity, look up the contact in a data provider, write a personalized note in Gong Engage, and then manually update six CRM fields. <strong>That's 20–30 minutes of work before a single value-creating interaction happens.</strong></p>
-      <p>Multiply that by 30–50 new accounts per week per rep, and you're looking at entire workdays consumed by research that follows near-identical patterns every time. It's rule-based enough to automate but complex enough — synthesizing multiple data sources into a coherent assessment — that simple Zapier workflows can't handle it.</p>
+      <h2 class="cs-section-title">Deals don't die in one moment — they erode over weeks. The signals are in the data. Nobody's reading them.</h2>
+      <p>A champion goes quiet after a promising call. An opportunity hasn't moved stages in three weeks. A contact who was the primary buyer just left the company. A Gong transcript from last Tuesday has the customer mentioning a competitor — and nobody flagged it. <strong>All of this is in the data. None of it is reaching anyone in time to act.</strong></p>
+      <p>With 40–60 open opportunities per rep, "actively monitoring your pipeline for risk signals" doesn't happen consistently. Reps review their Salesforce reports on Monday morning. By Friday, a deal that's been dark for 18 days is still dark — and the first time a manager hears about it is during a forecast call when it's too late to change the outcome.</p>
 
-      <div class="callout">
-        <strong>This is exactly the problem LLMs solve.</strong> They're not good at reliable data retrieval, but they're exceptional at reading context from multiple sources and synthesizing a coherent recommendation. Pair an LLM with a reliable workflow orchestrator, and you have the foundation for a genuine GTM agent.
+      <div class="callout callout-amber">
+        <strong>The problem isn't a data problem — it's an attention problem.</strong> Salesforce has the stagnation data. Gong has the call intelligence. What was missing was a layer that connected those signals to the right person at the moment action was still possible — without requiring that person to go looking.
       </div>
 
       <ul class="cs-list">
-        <li><strong>20–30 min of research per account</strong> — time that grows linearly with pipeline targets</li>
-        <li><strong>Inconsistent research quality</strong> — what a rep finds depends on how thorough they are that day</li>
-        <li><strong>Delayed sequence enrollment</strong> — accounts sit in queues for hours or days before outreach begins</li>
-        <li><strong>Sparse CRM data</strong> — manual entry means incomplete records, broken reporting, and poor attribution</li>
+        <li><strong>Deal stagnation invisible until forecast:</strong> deals sitting dark for weeks with no automated alert — managers discovering at-risk pipeline in QBRs, not 3 weeks earlier</li>
+        <li><strong>Gong insights siloed:</strong> call transcripts captured but not acted on — competitor mentions and procurement objections buried in recordings nobody re-watched</li>
+        <li><strong>Champion departures missed:</strong> no monitoring for contact changes at key accounts — reps finding out their champion left from a bounce email, not a proactive alert</li>
+        <li><strong>Missed next steps uncaught:</strong> next step dates passing with no activity logged and no flag to anyone</li>
+        <li><strong>Rep attention split:</strong> reps working inbound and outbound simultaneously had no triage system telling them which existing deals needed attention most urgently</li>
       </ul>
     </div>
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Approach</p>
-      <h2 class="cs-section-title">Design for the full workflow, not just the research step. Build human checkpoints in from the start.</h2>
-      <p>The design principle I started with: <strong>an agent that does 90% of the work autonomously and surfaces the remaining 10% for human review is more valuable than one that tries to do 100% and gets it wrong</strong>. GTM agents fail when they optimize for automation completeness over decision quality.</p>
-      <p>I chose n8n as the orchestration layer because it's open source, self-hostable, supports 400+ native integrations, and has strong branching logic for the conditional decisions an agentic workflow requires. Claude was the LLM choice — specifically for its long context window (needed to process multi-source research) and its reliability on synthesis tasks vs. data hallucination.</p>
-      <p>The workflow scope was deliberately narrow for v1: <strong>research → score → enrich CRM → sequence decision</strong>. No email generation, no autonomous outreach — those came in v2 once the research and scoring layer was validated.</p>
+      <h2 class="cs-section-title">Monitor continuously. Synthesize context. Deliver alerts specific enough to act on immediately.</h2>
+      <p>The design principle I started with: <strong>a generic alert gets ignored; a specific alert gets acted on</strong>. "This deal hasn't moved in 21 days" is noise. "Acme Corp — no contact in 19 days. Last call: champion mentioned procurement freeze in Q2. Suggested action: executive re-engagement before Q2 closes" is something a rep opens and responds to within the hour.</p>
+      <p>I chose n8n as the monitoring and orchestration layer — open source, self-hostable, with native connectors for Salesforce, Gong, and Slack, and strong conditional branching for the routing logic. Claude was the synthesis layer: reading the assembled deal context and writing the alert summary in plain language a rep could act on without needing to open Salesforce first.</p>
+      <p>Critically, I designed the alert routing to match the urgency and deal size. A deal stagnating 10 days before its expected close date at $200K ARR routes differently than a $15K deal that's been quiet for a week. <strong>Alert fatigue kills adoption faster than any technical failure</strong> — so deduplication and routing thresholds were designed before a single alert was built.</p>
     </div>
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Build</p>
-      <h2 class="cs-section-title">Five-step agentic loop: research → score → update CRM → decide → enroll or escalate.</h2>
+      <h2 class="cs-section-title">Five-layer system: signal definitions → monitoring → synthesis → routing → Slack delivery with Salesforce writeback.</h2>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">01</div>
           <div class="step-content">
-            <div class="step-title">Trigger — New account enters target list in Salesforce</div>
-            <div class="step-desc">n8n listens for Salesforce webhook: new lead created, account stage change, or manual "research trigger" field set by a rep. Immediately kicks off the research pipeline — no batch delays.</div>
+            <div class="step-title">Signal definitions — What counts as a risk trigger</div>
+            <div class="step-desc">Defined five monitored signal types with configurable thresholds: deal stagnation (no stage progression in N days, tiered by deal size), contact inactivity (no calls or emails logged in N days), champion departure (primary contact changed jobs, via data provider monitoring), Gong call signals (competitor mention, pricing objection, procurement delay — extracted from transcripts), and missed next steps (next step date passed with no activity logged). Thresholds reviewed with VP Sales before launch.</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">02</div>
           <div class="step-content">
-            <div class="step-title">Research Agent — Multi-source data gathering</div>
-            <div class="step-desc">n8n pulls in parallel: company website content (via web content scraping), recent news (via News API), LinkedIn company page summary, Clay for firmographic and demographic enrichment, ZoomInfo firmographics, existing Salesforce activity history, job posting data (growth signal), product usage signals (in-app behavior and engagement data), and web traffic and intent data via Demandbase. All context assembled into a single prompt payload.</div>
+            <div class="step-title">n8n monitoring layer — Scheduled checks and event-driven triggers</div>
+            <div class="step-desc">Two trigger types: scheduled (nightly Salesforce polling for stagnation, inactivity, and missed next steps) and event-driven (Gong webhook fires on call completion, triggering real-time transcript analysis). Deduplication logic prevents the same deal alerting more than once per signal type within a 5-day window — preventing the alert fatigue that kills adoption.</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <div class="step-content">
-            <div class="step-title">Scoring Agent — Claude synthesizes and scores</div>
-            <div class="step-desc">Claude receives the full research context and returns: ICP fit score (1–5), trigger strength (weak / moderate / strong), a one-sentence "why now" summary, and a recommended action (sequence A, sequence B, or hold for human review). Structured JSON output for reliable downstream parsing.</div>
+            <div class="step-title">Claude synthesis — Context-aware alert generation</div>
+            <div class="step-desc">For each triggered signal, Claude receives the full deal context: opportunity details, stage history, activity log, Gong call summary where relevant, and account history. Returns a structured JSON payload: 2–3 sentence situation summary in plain English, the specific risk identified, and a concrete recommended action. The summary is written as if Claude is a deal coach briefing the rep — specific to this deal, not a generic template.</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">04</div>
           <div class="step-content">
-            <div class="step-title">CRM Enrichment — Write back to Salesforce</div>
-            <div class="step-desc">n8n writes AI score, trigger summary, research-derived fields (tech stack, recent news, key contacts), and data source timestamps back to Salesforce. Fields visible in the rep's lead/account view so context is available before any human interaction.</div>
+            <div class="step-title">Smart routing — Right alert to the right person</div>
+            <div class="step-desc">Three routing tiers: rep-only (standard deals within normal stagnation window), rep + manager CC (deals above $75K ARR or stagnation beyond 30 days), VP alert (commit-forecast deals with no contact in 14+ days). Routing logic in n8n — no hardcoded rep lists, pulls org hierarchy from Salesforce dynamically so it stays current as the team changes.</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">05</div>
           <div class="step-content">
-            <div class="step-title">Sequence Decision — Enroll or escalate</div>
-            <div class="step-desc">Score ≥ 4: auto-enroll in appropriate Gong Engage sequence based on persona/segment. Score 2–3: send Slack notification to rep with full context for human decision. Score ≤ 1: tag account as low-priority, skip sequencing, log for quarterly review.</div>
+            <div class="step-title">Slack delivery + Salesforce writeback</div>
+            <div class="step-desc">Rich Slack message: deal name, ARR, close date, days since last activity, AI-generated situation summary, and four quick-action buttons (Log a call, Update next steps, Flag for manager review, Snooze 3 days). Button actions write back to Salesforce via n8n webhooks in real time — so the rep's response to the alert is captured in CRM without them opening a browser.</div>
           </div>
         </div>
       </div>
 
       <div class="callout" style="margin-top: 32px;">
-        <strong>The human escalation path was built first, not last.</strong> Before the happy path worked end-to-end, I made sure low-confidence accounts had a clear handoff to a human with full context. This is what makes the system trustworthy — reps know that if Claude isn't confident, they'll hear about it.
+        <strong>The Slack quick-action buttons were the most underrated design decision.</strong> Before them, reps would read an alert and then lose momentum context-switching to Salesforce to log the follow-up. With in-Slack actions, the gap between "I got the alert" and "I logged a response" dropped to under 60 seconds.
       </div>
     </div>
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Results</p>
-      <h2 class="cs-section-title">Research that took 20+ minutes per account now takes under 2. CRM data that used to require manual entry now fills itself.</h2>
+      <h2 class="cs-section-title">Every deal in pipeline monitored. Signals reaching reps in minutes. At-risk deals surfaced while there's still time to act.</h2>
 
       <div class="results-grid">
         <div class="result-card">
-          <span class="result-num">&gt;90%</span>
-          <div class="result-label">Research time cut</div>
-          <div class="result-desc">Per-account research time dropped from 20–30 minutes to under 2 minutes of human review — the agent does the rest.</div>
+          <span class="result-num">100%</span>
+          <div class="result-label">Pipeline coverage</div>
+          <div class="result-desc">Every open opportunity monitored continuously — no deal goes dark without a signal reaching the right person. Previously, monitoring was limited to whatever a rep manually reviewed each week.</div>
         </div>
         <div class="result-card">
-          <span class="result-num">85%+</span>
-          <div class="result-label">CRM field completeness</div>
-          <div class="result-desc">Salesforce records populated automatically with enriched data, AI scores, and trigger summaries — no manual entry required.</div>
+          <span class="result-num">75%+</span>
+          <div class="result-label">Alert-to-action rate</div>
+          <div class="result-desc">More than 75% of delivered alerts result in a logged Salesforce activity within 48 hours — confirming the alerts are specific enough to act on, not generic enough to ignore.</div>
         </div>
         <div class="result-card">
           <span class="result-num">&lt;5 min</span>
-          <div class="result-label">Trigger to sequence enrollment</div>
-          <div class="result-desc">High-scoring accounts enter Gong Engage sequences within minutes of the trigger — vs. hours or days with manual processes.</div>
+          <div class="result-label">Signal to alert</div>
+          <div class="result-desc">Gong call completes → transcript analyzed → Claude synthesizes → Slack alert delivered in under 5 minutes. Deal stagnation checks run nightly with alerts delivered before the start of the next business day.</div>
         </div>
         <div class="result-card">
-          <span class="result-num">Redirected</span>
-          <div class="result-label">SDR capacity</div>
-          <div class="result-desc">Time recaptured from research was redirected to actual selling — call prep, discovery, and follow-up rather than data gathering.</div>
+          <span class="result-num">Earlier</span>
+          <div class="result-label">At-risk deal visibility</div>
+          <div class="result-desc">Managers seeing at-risk pipeline weeks earlier than before — in time to coach, re-engage, or escalate. The shift: from discovering risk in forecast calls to managing it proactively.</div>
         </div>
       </div>
     </div>
 
     <div class="cs-section reveal">
       <p class="cs-eyebrow">Key Takeaways</p>
-      <h2 class="cs-section-title">What I learned building my first production GTM agent.</h2>
+      <h2 class="cs-section-title">What I learned building a production deal monitoring agent.</h2>
       <div class="takeaways">
         <div class="takeaway">
           <span class="takeaway-icon">🎯</span>
-          <span><strong>Scope the agent tightly for v1.</strong> The temptation is to automate everything. Resist it. Start with the highest-value, most repeatable step (research) and validate that it's accurate before expanding. Every scope addition is a new failure mode to manage.</span>
+          <span><strong>Specificity is what separates an alert from noise.</strong> A message telling a rep their deal is stagnating gets dismissed. A message telling them exactly what happened on the last call, why that's a risk, and what to do about it gets acted on. Claude's synthesis step — writing the situation summary — is the most important part of the system.</span>
         </div>
         <div class="takeaway">
-          <span class="takeaway-icon">📋</span>
-          <span><strong>Structured output is not optional.</strong> If Claude returns free-form text, downstream parsing breaks unpredictably. Define the exact JSON schema you need and prompt for it explicitly. Add validation in n8n so malformed responses trigger a fallback, not a broken workflow.</span>
+          <span class="takeaway-icon">🔇</span>
+          <span><strong>Alert fatigue will kill adoption before any technical failure does.</strong> Build deduplication and routing thresholds before building the first alert. If reps start ignoring alerts because they're too frequent or too generic, you'll never recover their trust — even after you fix the underlying issue.</span>
         </div>
         <div class="takeaway">
-          <span class="takeaway-icon">🧠</span>
-          <span><strong>LLMs are synthesizers, not databases.</strong> Claude shouldn't be fetching data — it should be reading data and making judgments. Keep data retrieval in n8n where it's reliable and deterministic. Give Claude the assembled context and ask for the reasoning.</span>
+          <span class="takeaway-icon">⚡</span>
+          <span><strong>Close the action loop inside the alert.</strong> Slack quick-action buttons that write back to Salesforce eliminated the context-switch that was the biggest friction point in the pre-build workflow. The fewer steps between "I read the alert" and "I took action," the higher the response rate.</span>
         </div>
         <div class="takeaway">
-          <span class="takeaway-icon">👤</span>
-          <span><strong>Trust is built through the escalation path, not the automation path.</strong> Reps adopt agentic tools when they trust them. That trust comes from seeing the system gracefully hand off uncertain cases to humans — not from watching it barrel through low-confidence decisions autonomously.</span>
+          <span class="takeaway-icon">📐</span>
+          <span><strong>Routing logic is a business design problem, not a technical one.</strong> What deal size triggers a manager CC? How many days of silence before a VP alert? These decisions require VP Sales input, not engineering judgment. Get alignment on routing thresholds before launch — changing them after reps have already formed habits is painful.</span>
         </div>
       </div>
     </div>
@@ -197,8 +197,8 @@
 
 <div class="cs-cta">
   <div class="container">
-    <h2>Want to build a GTM agent?</h2>
-    <p>I design and deploy agentic workflows for GTM teams using n8n, Claude, and your existing stack. From scoping to production in 3–5 weeks.</p>
+    <h2>Want pipeline risk surfaced before it becomes a forecast problem?</h2>
+    <p>I design and deploy agentic monitoring workflows for GTM teams using n8n, Claude, and your existing stack. From scoping to production in 3–5 weeks.</p>
     <div class="cs-cta-btns">
       <a href="../index.html#contact" class="btn btn-primary"><i data-lucide="mail" width="15" height="15"></i> Get in Touch</a>
       <a href="../index.html#projects" class="btn btn-ghost">View All Projects</a>

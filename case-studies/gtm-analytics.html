@@ -33,7 +33,7 @@
     <a href="../index.html#projects" class="cs-back"><i data-lucide="arrow-left" width="13" height="13"></i> Back to Projects</a>
     <div class="cs-meta">
       <span class="badge badge-green">Live</span>
-      <span class="cs-company">Infrastructure Software · Pre-IPO</span>
+      <span class="cs-company">Developer Tools</span>
     </div>
     <h1 class="cs-title">GTM Analytics & KPI Framework</h1>
     <p class="cs-tagline">Built the metrics infrastructure and analytical frameworks that powered weekly marketing and sales reviews, monthly GTM reporting, and quarterly board decks — establishing a single source of truth for revenue performance across a pre-IPO org.</p>
@@ -68,7 +68,7 @@
     <div class="cs-section reveal">
       <p class="cs-eyebrow">The Problem</p>
       <h2 class="cs-section-title">Every team was running their own numbers. Board decks were built manually every quarter. No one agreed on what "pipeline" meant.</h2>
-      <p>At a pre-IPO infrastructure software company, the GTM org had grown fast enough that each function — Sales, Marketing, and CS — had developed their own reporting cadence, their own metric definitions, and their own data pulls. The result was the classic symptom of analytics at scale: <strong>every leadership meeting started with 15 minutes of arguing about whose numbers were right</strong> before the actual work could begin.</p>
+      <p>At a pre-IPO infrastructure software company, the GTM org had grown fast enough that each function — Sales and Marketing — had developed their own reporting cadence, their own metric definitions, and their own data pulls. The result was the classic symptom of analytics at scale: <strong>every leadership meeting started with 15 minutes of arguing about whose numbers were right</strong> before the actual work could begin.</p>
       <p>Quarterly board decks were built manually by a RevOps analyst spending 2–3 days pulling data from Salesforce reports, reformatting in Excel, and assembling slides — a process so fragile that a single data refresh could cascade into hours of reconciliation. There was no BI layer connecting the underlying CRM data to the dashboards executives were making decisions from.</p>
 
       <div class="callout">
@@ -80,7 +80,7 @@
         <li><strong>Fragmented reporting:</strong> each function maintained their own Salesforce reports and spreadsheets with no reconciliation</li>
         <li><strong>Manual board prep:</strong> quarterly board deck data required 2–3 days of manual pulling and reformatting</li>
         <li><strong>No BI infrastructure:</strong> executive dashboards were static PowerPoint slides, not live data connections</li>
-        <li><strong>Reporting inconsistency:</strong> month-end close regularly surfaced discrepancies between Sales, Finance, and CS numbers on the same metrics</li>
+        <li><strong>Reporting inconsistency:</strong> month-end close regularly surfaced discrepancies between Sales and Finance numbers on the same metrics</li>
       </ul>
     </div>
 
@@ -88,7 +88,7 @@
       <p class="cs-eyebrow">The Approach</p>
       <h2 class="cs-section-title">Define the metrics before building the dashboards. Get executive alignment on KPI definitions first — everything else is implementation.</h2>
       <p>The instinct in analytics projects is to start building dashboards. I started with a KPI definition workshop instead. <strong>A dashboard built on undefined metrics just automates the disagreement</strong> — you get faster, prettier charts of numbers nobody agrees on. The definitional work had to come first.</p>
-      <p>I ran a 3-session working series with the VP of Sales, CMO, and CFO to define the canonical GTM metric set: every KPI named, defined, sourced (which Salesforce fields), and agreed-upon as the single version that would be used in all reporting. This sounds like it should take a week. It took four. The disagreements were real, the edge cases were meaningful, and the output — a one-page KPI glossary with field-level definitions — became one of the most-referenced documents in the company.</p>
+      <p>I ran a 3-session working series with the CRO and CMO to define the canonical GTM metric set: every KPI named, defined, sourced (which Salesforce fields), and agreed-upon as the single version that would be used in all reporting. This sounds like it should take a week. It took four. The disagreements were real, the edge cases were meaningful, and the output — a one-page KPI glossary with field-level definitions — became one of the most-referenced documents in the company.</p>
       <p>For BI tooling, I led a formal evaluation of Tableau as the primary reporting layer. The evaluation covered data connectivity to Salesforce, performance at our data volume, dashboard sharing and permissions models, and total cost of ownership. Tableau was selected and became the foundation for all live GTM dashboards going forward.</p>
     </div>
 
@@ -100,8 +100,8 @@
         <div class="step">
           <div class="step-num">01</div>
           <div class="step-content">
-            <div class="step-title">KPI definition workshop — Canonical metric set across Sales, Marketing, CS</div>
-            <div class="step-desc">Three working sessions with GTM, Finance, and Marketing leadership to define every KPI: metric name, precise definition, Salesforce source fields, inclusion/exclusion rules, and responsible owner. Output: a one-page KPI glossary covering 24 metrics across pipeline, funnel, revenue, and customer health — signed off by VP Sales, CMO, and CFO. This became the reference document for all GTM reporting.</div>
+            <div class="step-title">KPI definition workshop — Canonical metric set across Sales and Marketing</div>
+            <div class="step-desc">Three working sessions with GTM and Marketing leadership to define every KPI: metric name, precise definition, Salesforce source fields, inclusion/exclusion rules, and responsible owner. Output: a one-page KPI glossary covering 24 metrics across pipeline, funnel, revenue, and attainment — signed off by CRO and CMO. This became the reference document for all GTM reporting.</div>
           </div>
         </div>
         <div class="step">
@@ -158,7 +158,7 @@
         <div class="result-card">
           <span class="result-num">24 KPIs</span>
           <div class="result-label">Defined and agreed</div>
-          <div class="result-desc">Canonical metric set covering pipeline, funnel, revenue, and customer health — signed off by VP Sales, CMO, and CFO, with field-level definitions for every metric.</div>
+          <div class="result-desc">Canonical metric set covering pipeline, funnel, revenue, and attainment — signed off by CRO and CMO, with field-level definitions for every metric.</div>
         </div>
       </div>
     </div>
